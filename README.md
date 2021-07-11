@@ -4,4 +4,4 @@ Just know that my name is Ivan Chen.
 
 Thanks for visiting. 
 
-<img src="tenor.gif">
+<img src="images/tenor.gif">
