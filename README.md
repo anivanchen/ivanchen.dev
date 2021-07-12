@@ -1,7 +1,3 @@
-# There is absolutely nothing to see here at the moment. 
+# anivanchen.github.io
 
-Just know that my name is Ivan Chen. 
-
-Thanks for visiting. 
-
-<img src="images/tenor.gif">
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
