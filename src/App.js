@@ -53,30 +53,49 @@ function App() {
             new TxtType(elements[i], JSON.parse(toRotate), period);
           }
       }
-      // INJECT CSS
+
       var css = document.createElement("style");
-      css.type = "text/css";
       css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #3A3B40}";
       document.body.appendChild(css);
   };
 
+  function setTheme(themeName) {
+    localStorage.setItem('theme', themeName);
+    document.documentElement.className = themeName;
+  }
+
+  function toggleTheme() {
+    if (localStorage.getItem('theme') === 'theme-dark'){
+        setTheme('theme-light');
+    } else {
+        setTheme('theme-dark');
+    }
+  }
+  (function () {
+    if (localStorage.getItem('theme') === 'theme-dark') {
+        setTheme('theme-dark');
+    } else {
+        setTheme('theme-light');
+    }
+  })();
+
   return (
     <Fragment>
-      <div className="wrapper">
-        {/* <button className="mode dark right" onClick=""><i class="bi bi-brightness-high-fill"></i></button> */}
-        <div className="container">
+      <div className="opening-wrapper">
+        <button className="right mode" onClick={toggleTheme}><i className="bi bi-brightness-high-fill dark"></i></button>
+        <div className="opening-container">
 
           <a class="typewrite"
             data-period="2000"
             data-type='[ 
-              "Hi, Im Ivan",
-              "Im a programmer",
-              "The Languages/Technologies I use are",
+              "Hi, I am Ivan",
+              "I am a programmer",
+              "Languages / Technologies I use: ",
               "Javascript and Python",
               "SQL and PostgreSQL",
               "React.js, Node.js, and Express.js",
-              "I use Git and Figma",
-              "To improve my workflow"
+              "Git and Figma",
+              "Improves my workflow"
             ]'
           />
 
@@ -91,6 +110,7 @@ function App() {
         
         </div>
       </div>
+
       <div className="footer">
 
         <a className="social-media-button" href="https://linkedin.com/in/ivan-chen-9b85481b6"><i class="bi bi-linkedin"></i></a>
