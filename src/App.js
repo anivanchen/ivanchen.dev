@@ -55,7 +55,7 @@ function App() {
       }
 
       var css = document.createElement("style");
-      css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #3A3B40}";
+      css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid var(--color)}";
       document.body.appendChild(css);
   };
 
