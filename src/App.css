@@ -1,4 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Headland+One&family=Lato&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
+
 html {
+    margin: 0px;
+    scroll-behavior: smooth;
     background-color: #ECEDF0;
     color: #3A3B40;
+}
+
+.wrapper {
+    height: 100vh;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+}
+
+.text-container {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+button {
+    background-color: transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+h1, h2, h3 {
+    font-family: 'Headland One';
+}
+
+p {
+    font-family: 'Lato';
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+i {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+a.typewrite {
+    text-decoration: none;
+    color: #3A3B40;
+    font-size: 50px;
+}
+
+a.link {
+    color: #3A3B40;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    position: relative;
+    background-size: 100% 200%;
+    background-image: linear-gradient(to bottom, transparent 50%, #3A3B40 50%);
+    transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+a.link:hover {
+    background-position: 2px 100%;
+    color: #ECEDF0;
+}
+
+a.social-media-button {
+    color:white;
+    opacity: 1;
+    
+    transition: opacity .2s linear;
+}
+
+a.social-media-button:visited {
+    color:white;
+}
+
+a.social-media-button:hover {
+    opacity: 0.75;
+}
+
+a.dark {
+    color: #3A3B40;
+}
+a.dark:visited {
+    color: #3A3B40;
+}
+
+.no-decor {
+    text-decoration: none;
+}
+
+.bi {
+    padding: 5px;
+    font-size: 35px;
+    width: 35px;
+}
+
+.footer {
+    width: 100%;
+    float: center;
+    text-align: center;
+    background-color: #3A3B40;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+@media screen and (max-width: 640px) {
+    p{
+        margin-left: 3%;
+        margin-right: 3%;
+    }
 }
