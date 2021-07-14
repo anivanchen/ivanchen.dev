@@ -6,9 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Todo
 - [x] Add Opening Page
-- [ ] Add Preloading Page
+- [x] Add Preloading Page
 - [ ] Add Favorite Projects
 - [x] Add Dark Mode
 - [ ] Add Contact Form
 - [ ] Add Images
 - [ ] Make site more mobile friendly
+- [ ] Remake the typewriter effect
