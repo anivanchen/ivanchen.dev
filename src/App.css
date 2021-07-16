@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Headland+One&family=Lato&display=swap');
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
+@import url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.12.0/devicon.min.css");
 
 * {
     cursor: none;
@@ -76,8 +77,8 @@ html, body {
 
 #ring {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
     width: 30px;
     height: 30px;
     border: 2px solid var(--color);
@@ -98,7 +99,8 @@ html, body {
     left: 50%;
     width: 8px;
     height: 8px;
-    background-color: var(--color);
+    background-color: var(--color-reverse);
+    border: 2px solid var(--color);
     border-radius: 100%;
     transform: translate(-50%, -50%);
     z-index: 999;
@@ -106,7 +108,8 @@ html, body {
 }
 
 .cursor-change {
-    transform: scale(2);
+    transform: scale(200%);
+    transition: fadeout 500ms linear;
 }
 
 .opening-wrapper {
@@ -121,13 +124,71 @@ html, body {
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-
     text-align: center;
 }
 
 .text-container {
     margin-left: 10%;
     margin-right: 10%;
+}
+
+.text-container#gallery {
+    text-align: left;
+    padding: 10px;
+    padding-bottom: 25px;
+}
+
+.text-container#gallery .link {
+    color: var(--color-reverse);
+}
+
+.gallery-wrapper {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+    color: var(--color-reverse);
+}
+
+.gallery-item {
+    background-color: var(--color);
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.gallery-wrapper p {
+    font-family: 'Lato';
+    padding-bottom: 12px;
+    animation: fadein 200ms linear 0ms 1;
+}
+
+a.tech-link {
+    color: var(--color-reverse);
+    text-decoration: none;
+}
+
+.devicon-javascript-plain {
+    font-size: 35px;
+}
+
+.devicon-nodejs-plain {
+    font-size: 35px;
+}
+
+.devicon-express-plain {
+    font-size: 35px;
+}
+
+.devicon-postgresql-plain {
+    font-size: 35px;
+}
+
+.devicon-react-plain {
+    font-size: 35px;
+}
+
+.devicon-python-plain {
+    font-size: 35px;
 }
 
 .mode {
@@ -151,7 +212,7 @@ h1, h2, h3 {
     animation: fadein 200ms linear 0ms 1;
 }
 
-p {
+.opening-wrapper p {
     font-family: 'Lato';
     margin-left: 15%;
     margin-right: 15%;
@@ -208,7 +269,7 @@ a.social-media-button:hover {
     opacity: 0.75;
 }
 
-a.dark, i.dark {
+.dark, a.dark, i.dark {
     color: var(--color);
 }
 a.dark:visited, i.dark:visited {

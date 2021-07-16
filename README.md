@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Todo
 - [x] Add Opening Page
 - [x] Add Preloading Page
-- [ ] Add Favorite Projects
+- [x] Add Projects
 - [x] Add Dark Mode
 - [x] Add custom cursor
 - [ ] Add cursor animations
