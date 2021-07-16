@@ -79,8 +79,8 @@ html, body {
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border: 2px solid var(--color);
     border-radius: 100%;
     transform: translate(-50%, -50%);
@@ -189,6 +189,13 @@ a.tech-link {
 
 .devicon-python-plain {
     font-size: 35px;
+}
+
+.contact-wrapper {
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    text-align: center;
 }
 
 .mode {
