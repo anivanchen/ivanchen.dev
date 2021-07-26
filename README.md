@@ -12,6 +12,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [x] Add custom cursor
 - [ ] Add cursor animations
 - [ ] Add Contact Form
-- [ ] Add Images
-- [ ] Make site more mobile friendly
+- [x] Make site more mobile friendly
 - [ ] Remake the typewriter effect
