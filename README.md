@@ -1,7 +1,7 @@
 # anivanchen.github.io
 
 ![](https://img.shields.io/github/v/release/anivanchen/anivanchen.github.io?style=for-the-badge)
-![](https://img.shields.io/github/license/anivanchen/anivanchen.github.io?style=for-the-badge)
+![](https://img.shields.io/github/license/anivanchen/anivanchen.github.io?style=for-the-badge&color=brightgreen)
 
 
 This is the source code for my [personal website](https://anivanchen.github.io). 
