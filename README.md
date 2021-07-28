@@ -2,7 +2,10 @@
 
 This is the source code for my personal website. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Technologies
+
+- Node.js
+- React.js
 
 ## Todo
 - [x] Add Opening Page
