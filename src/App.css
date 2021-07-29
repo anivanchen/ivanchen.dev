@@ -107,11 +107,6 @@ html, body {
     pointer-events: none;
 }
 
-.cursor-change {
-    transform: scale(200%);
-    transition: fadeout 500ms linear;
-}
-
 .opening-wrapper {
     height: 100vh;
     margin-left: 15%;
@@ -280,10 +275,6 @@ a.social-media-button:hover {
 }
 a.dark:visited, i.dark:visited {
     color: var(--color);
-}
-
-.no-decor {
-    text-decoration: none;
 }
 
 .bi {

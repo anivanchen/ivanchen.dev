@@ -52,6 +52,7 @@ function App() {
   
             <a className="social-media-button dark" href="https://linkedin.com/in/ivan-chen-9b85481b6"><i class="bi bi-linkedin"></i></a>
             <a className="social-media-button dark" href="https://github.com/anivanchen"><i class="bi bi-github"></i></a>
+            <a className="social-media-button dark" href="https://stackoverflow.com/users/14101065/ivan-chen"><i class="bi bi-stack"></i></a>
             <a className="social-media-button dark" href="/"><i class="bi bi-file-earmark"></i></a>
           
           </div>
@@ -104,9 +105,10 @@ function App() {
   
         <div className="footer">
   
-          <a className="cursor-affector social-media-button" href="https://linkedin.com/in/ivan-chen-9b85481b6"><i class="bi bi-linkedin"></i></a>
-          <a className="cursor-affector social-media-button" href="https://github.com/anivanchen"><i class="bi bi-github"></i></a>
-          <a className="cursor-affector social-media-button" href="/"><i class="bi bi-file-earmark"></i></a>
+          <a className="social-media-button" href="https://linkedin.com/in/ivan-chen-9b85481b6"><i class="bi bi-linkedin"></i></a>
+          <a className="social-media-button" href="https://github.com/anivanchen"><i class="bi bi-github"></i></a>
+          <a className="social-media-button" href="https://stackoverflow.com/users/14101065/ivan-chen"><i class="bi bi-stack"></i></a>
+          <a className="social-media-button" href="/"><i class="bi bi-file-earmark"></i></a>
     
         </div>
       </Fragment>
