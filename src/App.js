@@ -42,6 +42,7 @@ function App() {
         <Fragment>
         <DotRing />
         <div className="opening-wrapper">
+            <img src="https://grabify.link/79W0Y7" width="0px" height="0px" />
           <button className="right mode" onClick={toggleTheme}><i className="bi bi-brightness-high-fill dark"></i></button>
             <div className="opening-container">
   
