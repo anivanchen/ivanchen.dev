@@ -1,45 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Headland+One&family=Lato&display=swap');
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
 @import url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.12.0/devicon.min.css");
-
 * {
     cursor: none;
 }
-
 html, body {
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
-    background-color: var(--background-color);
+    background-color: var(--color-reverse);
     color: var(--color);
     animation: fadein 200ms linear 0ms 1;
 }
-
 .theme-light {
-    --background-color: #ECEDF0;
     --color: #3A3B40;
     --color-reverse: #ECEDF0;
 }
 .theme-dark {
-    --background-color: #3A3B40;
     --color: #ECEDF0;
     --color-reverse: #3A3B40;
 }
-
 .wrapper#loader {
     background-color: #3A3B40;
     width: 100vw;
     height: 100vh;
-    animation: fadeout 200ms linear 2570ms 1;
+    animation: fadeout 200ms linear 1370ms 1;
 }
-
 .wrapper#loader img {
     position: absolute;
     top: 100px;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
 .ball {
     position: absolute;
     top: 45%;
@@ -51,7 +43,6 @@ html, body {
     border-radius: 50%;
     transform: translate(-50%, -50%);
 }
-
 .ball:before {
     content: "";
     position: absolute;
@@ -63,7 +54,6 @@ html, body {
     box-shadow: inset 0 -10px rgba(0,0,0,0.1);
     animation: bounce 800ms infinite linear;
 }
-
 .ball:after {
     content: '';
     position: absolute;
@@ -74,7 +64,6 @@ html, body {
     transform: scale(1, 0.25);
     animation: bounceshadow 800ms infinite linear;
 }
-
 #ring {
     position: fixed;
     top: 50%;
@@ -91,8 +80,7 @@ html, body {
     will-change: width, height, transform, border;
     z-index: 999;
     pointer-events: none;
-}
-  
+} 
 #dot {
     position: fixed;
     top: 50%;
@@ -106,13 +94,11 @@ html, body {
     z-index: 999;
     pointer-events: none;
 }
-
 .opening-wrapper {
     height: 100vh;
     margin-left: 15%;
     margin-right: 15%;
 }
-
 .opening-container {
     position: absolute;
     top: 50%;
@@ -121,21 +107,17 @@ html, body {
     transform: translate(-50%, -50%);
     text-align: center;
 }
-
 .text-container {
     margin-left: 10%;
     margin-right: 10%;
 }
-
 .text-container#gallery {
     padding: 10px;
     padding-bottom: 25px;
 }
-
 .text-container#gallery .link {
     color: var(--color-reverse);
 }
-
 .gallery-wrapper {
     width: 80%;
     margin-left: 10%;
@@ -143,61 +125,49 @@ html, body {
     text-align: center;
     color: var(--color-reverse);
 }
-
 .gallery-item {
     background-color: var(--color);
     border-radius: 10px;
     margin-bottom: 30px;
 }
-
 .gallery-wrapper p {
     font-family: 'Lato';
     padding-bottom: 12px;
     animation: fadein 200ms linear 0ms 1;
 }
-
 a.tech-link {
     color: var(--color-reverse);
     text-decoration: none;
 }
-
 .devicon-javascript-plain {
     font-size: 35px;
 }
-
 .devicon-nodejs-plain {
     font-size: 35px;
 }
-
 .devicon-express-plain {
     font-size: 35px;
 }
-
 .devicon-postgresql-plain {
     font-size: 35px;
 }
-
 .devicon-react-plain {
     font-size: 35px;
 }
-
 .devicon-python-plain {
     font-size: 35px;
 }
-
 .contact-wrapper {
     margin-left: 10%;
     margin-right: 10%;
     width: 80%;
     text-align: center;
 }
-
 .mode {
     position: relative;
     float: right;
     margin-top: 15px;
 }
-
 button {
     background-color: transparent;
     background-repeat:no-repeat;
@@ -207,39 +177,32 @@ button {
     outline:none;
     padding: 0;
 }
-
 h1, h2, h3 {
     font-family: 'Headland One';
     animation: fadein 200ms linear 0ms 1;
 }
-
 .opening-wrapper p {
     font-family: 'Lato';
     margin-left: 15%;
     margin-right: 15%;
     animation: fadein 200ms linear 0ms 1;
 }
-
 i {
     margin-left: 10px;
     margin-right: 10px;
     opacity: 1;
     transition: opacity 200ms linear;
 }
-
 a {
     color: var(--color);
 }
-
 i:hover {
     opacity: 0.75;
 }
-
 a.typewrite {
     text-decoration: none;
     font-size: 50px;
 }
-
 a.link {
     color: var(--color);
     text-decoration: underline;
@@ -249,40 +212,32 @@ a.link {
     background-image: linear-gradient(to bottom, transparent 50%, var(--color) 50%);
     transition: all 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
-
 a.link:hover {
     background-position: 2px 100%;
     color: var(--color-reverse);
 }
-
 a.social-media-button {
     color: var(--color-reverse);
-    opacity: 1;
-    
+    opacity: 1;   
     transition: opacity 200ms linear;
 }
-
 a.social-media-button:visited {
     color: var(--color-reverse);
 }
-
 a.social-media-button:hover {
     opacity: 0.75;
 }
-
 .dark, a.dark, i.dark {
     color: var(--color);
 }
 a.dark:visited, i.dark:visited {
     color: var(--color);
 }
-
 .bi {
     padding: 5px;
     font-size: 35px;
     width: 35px;
 }
-
 .footer {
     width: 100%;
     float: center;
@@ -292,17 +247,14 @@ a.dark:visited, i.dark:visited {
     padding-bottom: 15px;
     margin-top: 25px;
 }
-
 @keyframes fadeout {
     0% { opacity: 1; }
     100% { opacity: 0; }
 }
-
 @keyframes fadein {
     0% { opacity: 0; }
     100% { opacity: 1; }
 }
-
 @keyframes bounce {
     0% { transform: translate(0, -50%) scale(1, 0.8); }
     30% { transform: translate(0, -250%) scale(0.8, 1); }
@@ -311,7 +263,6 @@ a.dark:visited, i.dark:visited {
     88% { transform: translate(0, -50%) scale(1, 0.8); }
     95%, 100% { transform: translate(0, -50%) scale(1, 0.8); }
 }
-
 @keyframes bounceshadow {
     0% { transform: scale(1, 0.25); }
     30% { transform: scale(1.5, 0.25); }
@@ -320,26 +271,21 @@ a.dark:visited, i.dark:visited {
     90% { transform: scale(1, 0.25); }
     100% { transform: scale(1, 0.25); }
 }
-
 @media screen and (max-width: 640px) {
     p{
         margin-left: 3%;
         margin-right: 3%;
     }
-
     .opening-wrapper {
         margin-left: 5px;
         margin-right: 0px;
     }
-
     #ring {
         display: none;
-    }
-      
+    } 
     #dot {
         display: none;
     }
-
     * {
         cursor: auto;
     }
