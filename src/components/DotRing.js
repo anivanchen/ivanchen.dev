@@ -1,5 +1,4 @@
 import React from "react";
-import "../App.css";
 import useMousePosition from "../hooks/useMousePosition";
 
 const DotRing = () => {

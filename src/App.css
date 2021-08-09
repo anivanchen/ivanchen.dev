@@ -232,6 +232,9 @@ a.dark:visited, i.dark:visited {
     font-size: 35px;
     width: 35px;
 }
+input:hover {
+    background-color: green;
+}
 .footer {
     width: 100%;
     float: center;
