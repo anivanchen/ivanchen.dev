@@ -96,8 +96,6 @@ html, body {
 }
 .opening-wrapper {
     height: 100vh;
-    margin-left: 15%;
-    margin-right: 15%;
 }
 .opening-container {
     position: absolute;
@@ -108,8 +106,8 @@ html, body {
     text-align: center;
 }
 .text-container {
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 .text-container#gallery {
     padding: 10px;
@@ -131,7 +129,6 @@ html, body {
     margin-bottom: 30px;
 }
 .gallery-wrapper p {
-    font-family: 'Lato';
     padding-bottom: 12px;
     animation: fadein 200ms linear 0ms 1;
 }
@@ -170,21 +167,22 @@ a.tech-link {
 }
 button {
     background-color: transparent;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     border: none;
     cursor: pointer;
     overflow: hidden;
-    outline:none;
+    outline: none;
     padding: 0;
 }
 h1, h2, h3 {
     font-family: 'Headland One';
     animation: fadein 200ms linear 0ms 1;
 }
-.opening-wrapper p {
+p {
     font-family: 'Lato';
-    margin-left: 15%;
-    margin-right: 15%;
+    font-size: 18px;
+}
+.opening-wrapper {
     animation: fadein 200ms linear 0ms 1;
 }
 i {
@@ -199,14 +197,10 @@ a {
 i:hover {
     opacity: 0.75;
 }
-a.typewrite {
-    text-decoration: none;
-    font-size: 50px;
-}
 a.link {
     color: var(--color);
     text-decoration: underline;
-    text-underline-offset: 4px;
+    text-underline-offset: 3px;
     position: relative;
     background-size: 100% 200%;
     background-image: linear-gradient(to bottom, transparent 50%, var(--color) 50%);
@@ -280,11 +274,14 @@ a.dark:visited, i.dark:visited {
         margin-left: 5px;
         margin-right: 0px;
     }
-    #ring {
+    #ring, #dot {
         display: none;
     } 
-    #dot {
-        display: none;
+    h2 {
+        font-size: 5vw;
+    }
+    p {
+        font-size: 3.2vw;
     }
     * {
         cursor: auto;
