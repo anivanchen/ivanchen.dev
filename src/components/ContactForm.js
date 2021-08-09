@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
+const nodemailer = require('nodemailer');
 
 function ContactForm() {
 
@@ -23,27 +24,32 @@ function ContactForm() {
     width: "50%",
   }
 
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
   function handleContactFormSubmit() {
-    // var mailOptions = {
-    //   from: constants.loginUser,
-    //   to: constants.sendToUser,
-    //   subject: subject,
-    //   text: message
-    // };
-    // const transporter = nodemailer.createTransport({
-    //     service: 'gmail',
-    //     auth: {
-    //         user: constants.loginUser,
-    //         pass: constants.loginPass
-    //     }
-    // });
-    // transporter.sendMail (mailOptions, function (error, info) {
-    //     if (error) {
-    //         console.error(error);
-    //     } else {
-    //         console.log('Email sent: ' + info.response);
-    //     }
-    // })
+    var mailOptions = {
+      from: name,
+      to: "",
+      subject: subject,
+      text: message + `\n\nContact me at ${email}.`
+    };
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: "",
+            pass: ""
+        }
+    });
+    transporter.sendMail (mailOptions, function (error, info) {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    })
   }
 
   return (
@@ -51,10 +57,10 @@ function ContactForm() {
       <div className="contact-wrapper">
         <h1>Contact Me</h1>
         <form onSubmit={handleContactFormSubmit}>
-          <input type="text" style={input} placeholder="Name" required />
-          <input type="email" style={input} placeholder="Email" required />
-          <input type="text" style={input} placeholder="Subject" required />
-          <input type="textarea" style={input} placeholder="Message" required />
+          <input type="text" style={input} placeholder="Name" value={name} onChange={e => setName(e.target.value)} required />
+          <input type="email" style={input} placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
+          <input type="text" style={input} placeholder="Subject" value={subject} onChange={e => setSubject(e.target.value)} required />
+          <input type="textarea" style={input} placeholder="Message" value={message} onChange={e => setMessage(e.target.value)} required />
           <button type="submit" style={submit}>Submit</button>
         </form>
       </div>
