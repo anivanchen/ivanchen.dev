@@ -8,8 +8,8 @@ This is the source code for my [personal website](https://anivanchen.github.io).
 
 ## Technologies
 
-- Node.js
-- React.js
+- <img src="https://img.shields.io/badge/node.js-%2343853D.svg?style=for-the-badge&logo=node.js&logoColor=white">
+- <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB">
 
 ## Todo
 - [x] Add Opening Page
