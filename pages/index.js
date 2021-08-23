@@ -1,59 +1,22 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css';
+
+import Landing from './components/Landing';
+import About from './components/About';
+import Projects from './components/Projects';
+import Contributions from './components/Contributions';
+import Contact from './components/Contact';
 
 export default function Home() {
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Ivan Chen</title>
-        <meta name="description" content="" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <main className={styles.main}>
-        <h1 className={styles.title}>
-
-        </h1>
-
-        <p className={styles.description}>
-
-        </p>
-
-        <div className={styles.grid}>
-          <a href="" className={styles.card}>
-            <h2>&rarr;</h2>
-            <p></p>
-          </a>
-
-          <a href="" className={styles.card}>
-            <h2>&rarr;</h2>
-            <p></p>
-          </a>
-
-          <a
-            href=""
-            className={styles.card}
-          >
-            <h2>&rarr;</h2>
-            <p></p>
-          </a>
-
-          <a
-            href=""
-            className={styles.card}
-          >
-            <h2>&rarr;</h2>
-            <p>
-
-            </p>
-          </a>
-        </div>
+        <section className={styles.fullGlass}/>
+        <Landing />
+        <About />
+        <Projects />
+        <Contributions />
+        <Contact />
       </main>
-
-      <footer className={styles.footer}>
-        
-      </footer>
     </div>
   )
 }
