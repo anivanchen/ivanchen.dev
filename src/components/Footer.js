@@ -8,6 +8,8 @@ function Footer() {
           <a className="social-media-button" href="https://github.com/anivanchen"><i class="bi bi-github"></i></a>
           <a className="social-media-button" href="https://stackoverflow.com/users/14101065/ivan-chen"><i class="bi bi-stack"></i></a>
           {/* <a className="social-media-button" href="/"><i class="bi bi-file-earmark"></i></a> */}
+          <p><a href="https://github.com/anivanchen/anivanchen.github.io/issues">Report Bugs & Issues</a></p>
+          <p>Copyright © 2021 Ivan Chen</p>
         </div>
       </Fragment>
         
