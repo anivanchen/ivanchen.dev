@@ -23,7 +23,7 @@ function App() {
           <DotRing />
           <OpeningScreen />
           <Projects />
-          <ContactForm />
+          {/* <ContactForm /> */}
           <Footer />
         </Fragment>
 

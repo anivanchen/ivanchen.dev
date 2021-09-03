@@ -244,6 +244,13 @@ input:hover {
     padding-bottom: 15px;
     margin-top: 25px;
 }
+.footer p, .footer a {
+    color: var(--color-reverse);
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+}
 @keyframes fadeout {
     0% { opacity: 1; }
     100% { opacity: 0; }
