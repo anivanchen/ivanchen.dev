@@ -8,6 +8,7 @@ body {
   scrollbar-width: none;
   scroll-behavior: smooth;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--white);
 }
 html::-webkit-scrollbar { display: none; }
 a {
@@ -30,7 +31,7 @@ li {
 }
 li a {
   display: block;
-  padding: 4.25vh 20px;
+  padding: 4.25vh 30px;
 }
 button {
   font-size: 1.3vh;
@@ -49,6 +50,6 @@ button:active {
 * {
   box-sizing: border-box;
   --red: #FF6666;
-  --white: white;
-  --black: black;
+  --white: #FFE4DF;
+  color: #301D20;
 }

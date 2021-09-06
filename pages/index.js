@@ -47,7 +47,7 @@ export default function Home() {
         <Image src="/favicon.ico" width="10" height="10" />
         <ul className={styles.centered}>
           <li><p><a href="#about" className={styles.link}>About</a></p></li>
-          <li><p><a href="#projects" className={styles.link}>Projects</a></p></li>
+          <li><p><a href="/crypto" className={styles.link}>Projects</a></p></li>
           <li><p><a href="#contact" className={styles.link}>Contact</a></p></li>
           <li><p><a href="/blog" className={styles.link}>Blog</a></p></li>
           <li><p><a href="/resume.pdf" className={styles.link}>Resume</a></p></li>
@@ -160,7 +160,7 @@ export default function Home() {
           <p>Feel free to reach out! I would love to talk with anyone about
             anything. I usually reply within about a couple hours to a
             day during all hours (I'm a night owl) depending on my schedule.
-            you can reach me at {' '}
+            You can reach me at {' '}
             <a href="mailto:ivanchen07@gmail.com" className={styles.red + " " + styles.link}>ivanchen07@gmail.com</a>,
             or on Discord either at {' '}
             <a href="https://discordapp.com/channels/@me/822130958148435980/" className={styles.red + " " + styles.link}>TinyPixl#8196</a>
