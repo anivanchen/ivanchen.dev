@@ -27,7 +27,6 @@
 .opening {
   text-align: center;
   background-color: var(--red);
-  z-index: 3;
 }
 .downArrow {
   font-size: 50px;
@@ -99,9 +98,6 @@
 .down {
   transform: rotate(0deg);
   -webkit-transform: rotate(0deg);
-}
-.black {
-  color: var(--black)
 }
 .red {
   color: var(--red)
