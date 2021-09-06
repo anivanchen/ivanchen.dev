@@ -1,16 +1,28 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import React from 'react';
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+
+  React.useEffect(() => {
+    
+    // Sticky Navbar
+    const navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+    window.onscroll = function() {myFunction()};
+    function myFunction() {
+      if (window.pageYOffset >= sticky) {
+        navbar.style.position = 'fixed'
+      } else {
+        navbar.style.position = 'relative';
+      }
+    }
+
+  });
+
   return (
     <div className={styles.container}>
-
-      <Head>
-        <title>Ivan Chen</title>
-        <meta name="description" content="Ivan Chen's Portfolio Website" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
 
       <div className={styles.opening}>
         <div className={styles.centered}>
@@ -31,7 +43,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className={styles.navbar}>
+      <div className={styles.navbar} id="navbar">
         <Image src="/favicon.ico" width="10" height="10" />
         <ul className={styles.centered}>
           <li><p><a href="#about" className={styles.link}>About</a></p></li>

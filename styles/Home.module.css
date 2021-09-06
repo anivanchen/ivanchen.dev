@@ -11,7 +11,7 @@
   position: relative;
 }
 .navbar {
-  position: fixed;
+  position: sticky;
   height: 10vh;
   width: 100vw;
   top: 0;
