@@ -47,7 +47,7 @@ export default function Home() {
       <div className={styles.navbar} id="navbar">
         <ul className={styles.centered}>
           <li><p><a href="#about" className={styles.link}>About</a></p></li>
-          <li><p><a href="/crypto" className={styles.link}>Projects</a></p></li>
+          <li><p><a href="#projects" className={styles.link}>Projects</a></p></li>
           <li><p><a href="#contact" className={styles.link}>Contact</a></p></li>
           <li><p><a href="/blog" className={styles.link}>Blog</a></p></li>
           <li><p><a href="/resume.pdf" className={styles.link}>Resume</a></p></li>
