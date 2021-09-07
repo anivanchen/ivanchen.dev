@@ -53,3 +53,11 @@ button:active {
   --white: #FFE4DF;
   color: #2D2926FF;
 }
+@media screen and (max-width: 840px) {
+  button {
+    display: none;
+  }
+  * {
+    text-align: center;
+  }
+}

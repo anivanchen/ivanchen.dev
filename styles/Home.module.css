@@ -140,6 +140,33 @@
   .navbar {
     display: none !important;
   }
+  .opening .centered {
+    padding: 5vw;
+  }
+}
+@media screen and (max-width: 840px) {
+  .aboutImage {
+    display: none;
+  }
+  .about .centered {
+    left: 50%;
+  }
+  .footer {
+    height: 15vh;
+  }
+  .footerCentered {
+    margin: 0;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .footer .centered {
+    top: 40%;
+  }
+  .footer p {
+    margin-left: 0px;
+  }
 }
 @keyframes arrowBob {
   0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
