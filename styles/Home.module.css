@@ -5,26 +5,27 @@
   justify-content: center;
   align-items: center;
 }
-.opening, .about, .highlightProjects, .otherProjects, .contact, .footer {
-  height: 100vh;
+.opening, .about, .highlightProjects, .smallProjects, .contact, .footer {
   width: 100vw;
   position: relative;
 }
 .navbar {
-  position: sticky;
   height: 10vh;
   width: 100vw;
   top: 0;
-  display: flex;
   align-items: center;
   justify-content: right;
   background-color: var(--red);
   z-index: 2;
 }
+.navImage {
+  margin-right: 25px;
+}
 .icon {
   margin-right: 25px;
 }
 .opening {
+  height: 100vh;
   text-align: center;
   background-color: var(--red);
 }
@@ -34,12 +35,45 @@
   -webkit-animation: arrowBob 2s infinite;
   animation: arrowBob 2s infinite;
 }
+.about {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+}
+.aboutImage {
+  margin: 25vw;
+}
 .highlightProjects {
   background-color: var(--red);
-  z-index: 3;
 }
-.otherProjects {
-
+.highlightProjects .grid {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(0, 480px));
+  gap: 120px;
+  row-gap: 120px;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+}
+.projectImage img {
+  border-radius: 25px;
+}
+.smallProjects {
+  padding-top: 3vh;
+  padding-bottom: 5vh;
+}
+.smallProjects .grid {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(0, 240px));
+  gap: 60px;
+  row-gap: 60px;
+}
+.smallProject a {
+  text-decoration: none;
+}
+.smallProject a:hover {
+  text-decoration: underline;
 }
 .contact {
   height: 90vh;
@@ -54,9 +88,6 @@
 .footer p {
   font-size: 1vh;
   margin-left: 10px;
-}
-.footer a {
-  margin-right: 25px;
 }
 .centered {
   margin: 0;
@@ -104,6 +135,11 @@
 }
 .white {
   color: var(--white)
+}
+@media screen and (max-width: 1280px) {
+  .navbar {
+    display: none !important;
+  }
 }
 @keyframes arrowBob {
   0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
