@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import React from 'react';
 import styles from '../styles/Home.module.css'
@@ -214,7 +213,7 @@ export default function Home() {
             </svg>
           </a>
         </div>
-        <div className={styles.verticalCentered}>
+        <div className={styles.footerCentered}>
           <p><a href="https://github.com/anivanchen/anivanchen.github.io/issues" className={styles.link}>Report a Bug</a></p>
           <p>Copyright © 2021 Ivan Chen</p>
         </div>
