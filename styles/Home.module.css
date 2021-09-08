@@ -148,6 +148,9 @@
   .aboutImage {
     display: none;
   }
+  .projectImage {
+    display: none;
+  }
   .about .centered {
     left: 50%;
   }
