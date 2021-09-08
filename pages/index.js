@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import React from 'react';
 import styles from '../styles/Home.module.css'
 
@@ -64,14 +63,14 @@ export default function Home() {
           </a>
         </div>
         <div className={styles.navImage}>
-          <Image src="/logo.png" width="50" height="50" alt="" />
+          <img src="/logo.png" width="50" height="50" alt="" />
         </div>
       </div>
 
       <a id="about"></a>
       <div className={styles.about}>
         <div className={styles.aboutImage}>
-          <Image src="/ivan.png" width="195.5" height="646" alt="Ivan Chen" />
+          <img src="/ivan.png" width="195.5" height="646" alt="Ivan Chen" />
         </div>
         <div className={styles.centered}>
           <h2 className={styles.red}>Who Am I?</h2>
@@ -101,7 +100,7 @@ export default function Home() {
         <div className={styles.grid}>
           <div className={styles.highlightProject}>
             <div className={styles.projectImage}>
-              <Image src="/logo.png" width="200" height="200" alt="" />
+              <img src="/logo.png" width="200" height="200" alt="" />
             </div>
             <h2>anivanchen.github.io</h2>
             <p>My personal website built with Next.js.</p>
@@ -110,7 +109,7 @@ export default function Home() {
           </div>
           <div className={styles.highlightProject}>
             <div className={styles.projectImage}>
-              <Image src="/algorithms.png" width="200" height="200" alt="" />
+              <img src="/algorithms.png" width="200" height="200" alt="" />
             </div>
             <h2>algorithms</h2>
             <p>This project contains my implementations of various algorithms in JavaScript and Python.</p>
@@ -118,7 +117,7 @@ export default function Home() {
           </div>
           <div className={styles.highlightProject}>
             <div className={styles.projectImage}>
-              <Image src="/fileserver.png" width="200" height="200" alt="" />
+              <div className={styles.placeholderImage} />
             </div>
             <h2>file-server</h2>
             <p>A simple file server with authentication built using the PERN (PostgreSQL, Express, React, Node.js) stack.</p>

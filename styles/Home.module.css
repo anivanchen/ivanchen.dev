@@ -136,6 +136,10 @@
 .white {
   color: var(--white)
 }
+.placeholderImage {
+  width: 200px;
+  height: 200px;
+}
 @media screen and (max-width: 1280px) {
   .navbar {
     display: none !important;
