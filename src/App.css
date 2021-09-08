@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Headland+One&family=Lato&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
+@import url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.12.0/devicon.min.css");
+* {
+    cursor: none;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    background-color: var(--color-reverse);
+    color: var(--color);
+    animation: fadein 200ms linear 0ms 1;
+}
+.theme-light {
+    --color: #3A3B40;
+    --color-reverse: #ECEDF0;
+}
+.theme-dark {
+    --color: #ECEDF0;
+    --color-reverse: #3A3B40;
+}
+.wrapper#loader {
+    background-color: #3A3B40;
+    width: 100vw;
+    height: 100vh;
+    animation: fadeout 200ms linear 1370ms 1;
+}
+.wrapper#loader img {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.ball {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin-top: 80px;
+    background: transparent;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+.ball:before {
+    content: "";
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background: #ECEDF0;
+    border-radius: 50%;
+    box-shadow: inset 0 -10px rgba(0,0,0,0.1);
+    animation: bounce 800ms infinite linear;
+}
+.ball:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.1);
+    border-radius: 50%;
+    transform: scale(1, 0.25);
+    animation: bounceshadow 800ms infinite linear;
+}
+#ring {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    border: 2px solid var(--color);
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
+    -webkit-transition-duration: 100ms;
+    transition-duration: 100ms;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    will-change: width, height, transform, border;
+    z-index: 999;
+    pointer-events: none;
+} 
+#dot {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-reverse);
+    border: 2px solid var(--color);
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    pointer-events: none;
+}
+.opening-wrapper {
+    height: 100vh;
+}
+.opening-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.text-container {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+.text-container#gallery {
+    padding: 10px;
+    padding-bottom: 25px;
+}
+.text-container#gallery .link {
+    color: var(--color-reverse);
+}
+.gallery-wrapper {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+    color: var(--color-reverse);
+}
+.gallery-item {
+    background-color: var(--color);
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+.gallery-wrapper p {
+    padding-bottom: 12px;
+    animation: fadein 200ms linear 0ms 1;
+}
+a.tech-link {
+    color: var(--color-reverse);
+    text-decoration: none;
+}
+.devicon-javascript-plain {
+    font-size: 35px;
+}
+.devicon-nodejs-plain {
+    font-size: 35px;
+}
+.devicon-express-plain {
+    font-size: 35px;
+}
+.devicon-postgresql-plain {
+    font-size: 35px;
+}
+.devicon-react-plain {
+    font-size: 35px;
+}
+.devicon-python-plain {
+    font-size: 35px;
+}
+.contact-wrapper {
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    text-align: center;
+}
+.mode {
+    position: relative;
+    float: right;
+    margin-top: 15px;
+}
+button {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    padding: 0;
+}
+h1, h2, h3 {
+    font-family: 'Headland One';
+    animation: fadein 200ms linear 0ms 1;
+}
+p {
+    font-family: 'Lato';
+    font-size: 18px;
+}
+.opening-wrapper {
+    animation: fadein 200ms linear 0ms 1;
+}
+i {
+    margin-left: 10px;
+    margin-right: 10px;
+    opacity: 1;
+    transition: opacity 200ms linear;
+}
+a {
+    color: var(--color);
+}
+i:hover {
+    opacity: 0.75;
+}
+a.link {
+    color: var(--color);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    position: relative;
+    background-size: 100% 200%;
+    background-image: linear-gradient(to bottom, transparent 50%, var(--color) 50%);
+    transition: all 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+a.link:hover {
+    background-position: 2px 100%;
+    color: var(--color-reverse);
+}
+a.social-media-button {
+    color: var(--color-reverse);
+    opacity: 1;   
+    transition: opacity 200ms linear;
+}
+a.social-media-button:visited {
+    color: var(--color-reverse);
+}
+a.social-media-button:hover {
+    opacity: 0.75;
+}
+.dark, a.dark, i.dark {
+    color: var(--color);
+}
+a.dark:visited, i.dark:visited {
+    color: var(--color);
+}
+.bi {
+    padding: 5px;
+    font-size: 35px;
+    width: 35px;
+}
+input:hover {
+    background-color: green;
+}
+.footer {
+    width: 100%;
+    float: center;
+    text-align: center;
+    background-color: var(--color);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 25px;
+}
+.footer p, .footer a {
+    color: var(--color-reverse);
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+}
+@keyframes fadeout {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+@keyframes fadein {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@keyframes bounce {
+    0% { transform: translate(0, -50%) scale(1, 0.8); }
+    30% { transform: translate(0, -250%) scale(0.8, 1); }
+    60% { transform: translate(0, -300%) scale(1, 0.8); }
+    85% { transform: translate(0, -50%) scale(1, 0.8); }
+    88% { transform: translate(0, -50%) scale(1, 0.8); }
+    95%, 100% { transform: translate(0, -50%) scale(1, 0.8); }
+}
+@keyframes bounceshadow {
+    0% { transform: scale(1, 0.25); }
+    30% { transform: scale(1.5, 0.25); }
+    60% { transform: scale(2, 0.25); }
+    85% { transform: scale(1, 0.25); }
+    90% { transform: scale(1, 0.25); }
+    100% { transform: scale(1, 0.25); }
+}
+@media screen and (max-width: 640px) {
+    p{
+        margin-left: 3%;
+        margin-right: 3%;
+    }
+    .opening-wrapper {
+        margin-left: 5px;
+        margin-right: 0px;
+    }
+    #ring, #dot {
+        display: none;
+    } 
+    h2 {
+        font-size: 5vw;
+    }
+    p {
+        font-size: 3.2vw;
+    }
+    * {
+        cursor: auto;
+    }
+}
