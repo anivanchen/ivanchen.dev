@@ -1,21 +1,19 @@
-## [Mockup](https://www.figma.com/file/cIO9tcHHO3FtFmG3vBNw0P/Ivan-Chen?node-id=0%3A1)
+# anivanchen.github.io
+
+My personal website. Redesigned with Next and deployed to Github Pages.
+
+![](https://img.shields.io/github/v/release/anivanchen/anivanchen.github.io?style=for-the-badge)
+![](https://img.shields.io/github/license/anivanchen/anivanchen.github.io?style=for-the-badge&color=brightgreen)
+
+## Technologies
+
+- <img src="https://img.shields.io/badge/node.js-%2343853D.svg?style=for-the-badge&logo=node.js&logoColor=white">
+- <img src="https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white">
+- <img src="https://img.shields.io/badge/githubactions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white">
+- <img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white">
+
+[Mockup](https://www.figma.com/file/cIO9tcHHO3FtFmG3vBNw0P/Ivan-Chen?node-id=0%3A1)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Check out the old website at the [v1-legacy](https://github.com/anivanchen/anivanchen.github.io/tree/v1-legacy) branch.
