@@ -24,13 +24,12 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-
       <div className={styles.opening}>
         <div className={styles.centered}>
           <h2>Hey, I&apos;m</h2>
           <h1 className={styles.white}>Ivan Chen</h1>
-          <p>I&apos;m a sophmore at <a className={styles.link}> Stuyvesant High School</a> {" "}
-            who enjoys doing <a href="#highlightProjects" className={styles.link}>programming projects</a>
+          <p>I&apos;m a sophmore at <a href="https://stuy.enschool.org" className={styles.link}> Stuyvesant High School</a> {" "}
+            who enjoys doing <a href="#projects" className={styles.link}>programming projects</a>
             {" "}in my spare time. I am interested in anything
             related to technology ranging from artificial
             intelligence to IT infrastructure to cyber security.
@@ -65,8 +64,8 @@ export default function Home() {
           </a>
         </div>
         <div className={styles.navImage}>
-            <Image src="/logo.png" width="50" height="50" alt="" />
-          </div>
+          <Image src="/logo.png" width="50" height="50" alt="" />
+        </div>
       </div>
 
       <a id="about"></a>
@@ -110,13 +109,17 @@ export default function Home() {
             <a href="https://anivanchen.github.io" className={styles.link}>View Project →</a>
           </div>
           <div className={styles.highlightProject}>
-            <Image src="/algorithms.png" width="200" height="200" alt="" />
+            <div className={styles.projectImage}>
+              <Image src="/algorithms.png" width="200" height="200" alt="" />
+            </div>
             <h2>algorithms</h2>
             <p>This project contains my implementations of various algorithms in JavaScript and Python.</p>
             <p><a href="https://github.com/anivanchen/algorithms" className={styles.link}>View Code →</a></p>
           </div>
           <div className={styles.highlightProject}>
-            <Image src="/fileServer.png" width="200" height="200" alt="" />
+            <div className={styles.projectImage}>
+              <Image src="/fileserver.png" width="200" height="200" alt="" />
+            </div>
             <h2>file-server</h2>
             <p>A simple file server with authentication built using the PERN (PostgreSQL, Express, React, Node.js) stack.</p>
             <p><a href="https://github.com/anivanchen/file-server" className={styles.link}>View Code →</a></p>
