@@ -3,7 +3,8 @@
 My personal website. Redesigned with Next and deployed to Github Pages.
 
 ![](https://img.shields.io/github/v/release/anivanchen/anivanchen.github.io?style=for-the-badge)
-![](https://img.shields.io/github/license/anivanchen/anivanchen.github.io?style=for-the-badge&color=brightgreen)
+![](https://img.shields.io/github/license/anivanchen/anivanchen.github.io?color=brightgreen&logo=github&style=for-the-badge)
+![](https://img.shields.io/github/workflow/status/anivanchen/anivanchen.github.io/Build%20and%20Deploy?style=for-the-badge)
 
 ## Technologies
 
