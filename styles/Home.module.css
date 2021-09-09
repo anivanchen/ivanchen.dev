@@ -18,30 +18,15 @@
   background-color: var(--red);
   z-index: 2;
 }
-.navImage {
-  margin-right: 25px;
-}
-.icon {
-  margin-right: 25px;
-}
 .opening {
   height: 100vh;
   text-align: center;
   background-color: var(--red);
 }
-.downArrow {
-  font-size: 50px;
-  -moz-animation: arrowBob 2s infinite;
-  -webkit-animation: arrowBob 2s infinite;
-  animation: arrowBob 2s infinite;
-}
 .about {
   height: 80vh;
   display: flex;
   align-items: center;
-}
-.aboutImage {
-  margin: 25vw;
 }
 .highlightProjects {
   background-color: var(--red);
@@ -54,9 +39,6 @@
   row-gap: 120px;
   padding-top: 10vh;
   padding-bottom: 10vh;
-}
-.projectImage img {
-  border-radius: 25px;
 }
 .smallProjects {
   padding-top: 3vh;
@@ -119,8 +101,23 @@
   background-position: 2px 100%;
   color: var(--white);
 }
-.underline {
-  text-decoration: underline;
+.navImage {
+  margin-right: 25px;
+}
+.icon {
+  margin-right: 25px;
+}
+.downArrow {
+  font-size: 50px;
+  -moz-animation: arrowBob 2s infinite;
+  -webkit-animation: arrowBob 2s infinite;
+  animation: arrowBob 2s infinite;
+}
+.aboutImage {
+  margin: 25vw;
+}
+.projectImage img {
+  border-radius: 25px;
 }
 .right {
   transform: rotate(-45deg);
