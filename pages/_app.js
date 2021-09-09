@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
       <meta property="og:site_name" content="Ivan Chen" />
       <meta property="og:description" content="My portfolio. Built with Next.js and deployed on GitHub Pages." />
       <meta property="og:url" content="https://anivanchen.github.io/" />
-      <meta property="og:image" content="/seoimage.png" />
+      <meta property="og:image" content="https://anivanchen.github.io/seoimage.png" />
       <meta property="og:type" content="website" />
       <link rel="icon" href="/favicon.ico" />
       
