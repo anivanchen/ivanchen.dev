@@ -8,16 +8,17 @@ function MyApp({ Component, pageProps }) {
     <>
     <Head>
       <title>Ivan Chen</title>
-      <meta name="description" content="My portfolio!" />
+      <meta name="description" content="My portfolio. Built with Next.js and deployed on GitHub Pages." />
       <meta property="og:title" content="Ivan Chen" />
-      <meta property="og:description" content="My portfolio!" />
+      <meta property="og:site_name" content="Ivan Chen" />
+      <meta property="og:description" content="My portfolio. Built with Next.js and deployed on GitHub Pages." />
       <meta property="og:url" content="https://anivanchen.github.io/" />
-      <meta property="og:image" content={seoimage} />
+      <meta property="og:image" content="/seoimage.png" />
       <meta property="og:type" content="website" />
       <link rel="icon" href="/favicon.ico" />
-        
+      
       <meta name="google-site-verification" content="X4_LgSQJICGZZM7kYShP-XXRpkoEc4Oy9l2vmo1JW_w" />
-        
+      
       <meta name="twitter:card" content="summary" key="twcard" />
       <meta name="twitter:creator" content="anivanchen_" key="twhandle" />
         
