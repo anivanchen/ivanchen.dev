@@ -29,15 +29,21 @@ export default function OtherProjects() {
             </a>
           </div>
           <div className={styles.smallProject}>
-            <a href="https://github.com/anivanchen/blog">
-              <p>blog →</p>
-              <p>A simple blog made with React, Next, GraphQL, and SQLite.</p>
-            </a>
-          </div>
-          <div className={styles.smallProject}>
             <a href="https://github.com/anivanchen/QR">
               <p>QR →</p>
               <p>A QR code generator and reader with encryption.</p>
+            </a>
+          </div>
+          <div className={styles.smallProject}>
+            <a href="https://github.com/anivanchen/morsecode">
+              <p>morsecode →</p>
+              <p>A Morse code encoder and decoder in Python.</p>
+            </a>
+          </div>
+          <div className={styles.smallProject}>
+            <a href="https://github.com/anivanchen/blog">
+              <p>blog →</p>
+              <p>A simple blog made with React, Next, GraphQL, and SQLite.</p>
             </a>
           </div>
           <div className={styles.smallProject}>
