@@ -101,9 +101,9 @@
   background-position: 2px 100%;
   color: var(--white);
 }
-.navImage {
+/* .navImage {
   margin-right: 25px;
-}
+} */
 .icon {
   margin-right: 25px;
 }
@@ -114,7 +114,7 @@
   animation: arrowBob 2s infinite;
 }
 .aboutImage {
-  margin: 25vw;
+  margin: 15vw;
 }
 .projectImage img {
   border-radius: 25px;
@@ -144,8 +144,14 @@
   .opening .centered {
     padding: 5vw;
   }
+  .link {
+  text-underline-offset: 1px;
+  }
 }
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 960px) {
+  .opening .centered {
+    padding: 0;
+  }
   .aboutImage {
     display: none;
   }

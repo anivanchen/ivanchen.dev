@@ -17,7 +17,7 @@ export default function Footer() {
         </div>
         <div className={styles.footerCentered}>
           <p><a href="https://github.com/anivanchen/anivanchen.github.io/issues" className={styles.link}>Report a Bug</a></p>
-          <p>Copyright © 2021 Ivan Chen</p>
+          <p>Copyright © 2021 Ivan Chen | NYC, NY</p>
         </div>
       </footer>
     )
