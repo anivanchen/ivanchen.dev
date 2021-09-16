@@ -13,7 +13,7 @@ export default function HighlightProjects() {
               <h2>anivanchen.github.io</h2>
               <p>My personal website built with Next.js.</p>
               <p><a href="https://github.com/anivanchen/anivanchen.github.io" className={styles.link}>View Code →</a></p>
-              <a href="https://anivanchen.github.io" className={styles.link}>View Project →</a>
+              <p><a href="https://anivanchen.github.io" className={styles.link}>View Project →</a></p>
             </div>
             <div className={styles.highlightProject}>
               <div className={styles.projectImage}>

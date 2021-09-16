@@ -42,9 +42,9 @@ export default function Navbar() {
               </svg>
           </a>
         </div>
-        <div className={styles.navImage}>
+        {/* <div className={styles.navImage}>
           <img src="/logo.png" width="50" height="50" alt="" />
-        </div>
+        </div> */}
       </div>
   )
 }
