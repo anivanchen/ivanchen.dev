@@ -7,10 +7,12 @@ import HighlightProjects from '../components/HighlightProjects'
 import OtherProjects from '../components/OtherProjects'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
+import Cursor from '../components/Cursor'
 
 export default function Home() {
   return (
     <div className={styles.container}>
+      <Cursor />
       <Opening />
       <Navbar />
       <About />

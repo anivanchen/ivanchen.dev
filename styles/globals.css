@@ -55,6 +55,7 @@ img {
   --red: #FF6666;
   --white: white;
   color: #2D2926FF;
+  cursor: none;
 }
 @media screen and (max-width: 1920px) {
   button {
