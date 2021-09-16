@@ -6,7 +6,7 @@ export default function About() {
         <a id="about"></a>
         <div className={styles.about}>
           <div className={styles.aboutImage}>
-            <img src="/ivan2.png" width="300" height="300" alt="Ivan Chen" id="aboutImg" />
+            <img src="/ivantwo.png" width="300" height="300" alt="Ivan Chen" id="aboutImg" />
           </div>
           <div className={styles.centered}>
           <h2 className={styles.red}>Who Am I?</h2>
