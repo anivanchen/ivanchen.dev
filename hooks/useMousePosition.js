@@ -15,6 +15,5 @@ export default function useMousePosition() {
     };
   }, []);
 
-  console.log(mousePosition)
   return mousePosition;
 }
