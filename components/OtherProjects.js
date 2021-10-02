@@ -43,25 +43,25 @@ export default function OtherProjects() {
           <div className={styles.smallProject}>
             <a href="https://github.com/anivanchen/blog">
               <p>blog →</p>
-              <p>A simple blog made with React, Next, GraphQL, and SQLite.</p>
+              <p>A simple blog built in Next.js. Not yet up.</p>
             </a>
           </div>
           <div className={styles.smallProject}>
             <a href="https://github.com/anivanchen/dummytext">
               <p>dummytext →</p>
-              <p>A dummy text generator.</p>
+              <p>A dummy text generator. Not yet up.</p>
             </a>
           </div>
           <div className={styles.smallProject}>
             <a href="https://github.com/anivanchen/conversions">
               <p>conversions →</p>
-              <p>A site with many unit conversions.</p>
+              <p>A site with many unit conversions. Not yet up.</p>
             </a>
           </div>
           <div className={styles.smallProject}>
             <a href="https://github.com/anivanchen/my-card">
               <p>my-card →</p>
-              <p>My digital contact card.</p>
+              <p>My digital contact card. Not yet up.</p>
             </a>
           </div>
         </div>
