@@ -47,6 +47,12 @@ export default function OtherProjects() {
             </a>
           </div>
           <div className={styles.smallProject}>
+            <a href="https://github.com/anivanchen/stuycs-submit">
+              <p>stuycs-submit →</p>
+              <p>A CLI tool to submit homework to the StuyCS homework server.</p>
+            </a>
+          </div>
+          <div className={styles.smallProject}>
             <a href="https://github.com/anivanchen/stuycs-classlist">
               <p>stuycs-classlist →</p>
               <p>A web scraper written in Python and uses BeautifulSoup to grab a list of student names and their respective periods.</p>
