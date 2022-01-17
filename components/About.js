@@ -19,12 +19,17 @@ export default function About() {
             material to teach future members and work with
             others to write code for our robot. 
           </p>
-            <p>
-              I am also a member of the IT department in the
-              Stuyvesant Sophomore Caucus where I maintain
-              and redesign our various projects such as {" "}
-              <a href="https://sophomore.stuysu.org" className={styles.red + " " + styles.link}>sophomore.stuysu.org</a>
-              , alongside others, which was designed by Paul Serbanescu and Myles Pasetsky.
+          <p>
+            I am also a member of the IT department in the
+            Stuyvesant Sophomore Caucus where I maintain
+            and redesign our various projects such as {" "}
+            <a href="https://sophomore.stuysu.org" className={styles.red + " " + styles.link}>sophomore.stuysu.org</a>
+            , alongside others, which was designed by Paul Serbanescu and Myles Pasetsky.
+          </p>
+          <p>
+            In addition, I am a current member of the Stuyvesant Spectator Web Development Team where I am currently working with others 
+            to completely restructure and redesign our existing site: frontend, backend, and database. The project can be found {" "}
+            <a href="https://github.com/stuyspec/stuyspecrewrite" className={styles.red + " " + styles.link}>here</a>.
           </p>
           <p>
             I also work on other side projects in my free time such as
