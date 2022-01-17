@@ -38,9 +38,9 @@ export default function About() {
             <a href="https://github.com/anivanchen" className={styles.red + " " + styles.link}>GitHub profile</a>.
           </p>
 
-          <p>My favorite programming languages are JavaScript,
-            Python, and Next. I use Docker and Heroku for deployment,
-            React for front-end, Express for middle-ware, Node for
+          <p>My favorite programming languages are TypeScript and 
+            Python. I use Docker and Heroku for deployment,
+            Next for front-end, Express for middle-ware, Node for
             back-end, and PostgreSQL and MongoDB for database management.
           </p>
           </div>
