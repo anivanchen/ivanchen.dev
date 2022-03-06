@@ -107,7 +107,7 @@ const About: NextPage = () => {
               <a href={social.link} className={styles.inline}>
                 <div>
                   <Image
-                    src={`/${social.name}.svg`}
+                    src={`/${social.name.toLowerCase()}.svg`}
                     alt={social.name}
                     width={14}
                     height={14}
