@@ -1,10 +1,10 @@
-import type { NextPage } from "next"
-import Head from "next/head"
-import Image from "next/image"
-import Link from "next/link"
-import Footer from "../components/Footer"
-import Header from "../components/Header"
-import styles from "../styles/Card.module.css"
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import styles from "../styles/Card.module.css";
 
 const Card: NextPage = () => {
   return (
@@ -23,12 +23,19 @@ const Card: NextPage = () => {
             <div className={styles.front}>
               <div className={styles.cardImage}>
                 <div className={styles.imageContainer}>
-                  <Image src="https://avatars.githubusercontent.com/u/51217025" alt="pfp" width="192px" height="192px" />
+                  <Image
+                    src="https://avatars.githubusercontent.com/u/51217025"
+                    alt="pfp"
+                    width="192px"
+                    height="192px"
+                  />
                 </div>
               </div>
               <div className={styles.cardContent}>
                 <div className={styles.inline}>
-                  <h1 className={styles.cardTitle} id="fancy-text">Ivan Chen</h1>
+                  <h1 className={styles.cardTitle} id="fancy-text">
+                    Ivan Chen
+                  </h1>
                   <p className={styles.cardSubtitle}>@anivanchen</p>
                 </div>
                 <p>Software Engineer | Web Developer | Designer</p>
@@ -58,10 +65,10 @@ const Card: NextPage = () => {
           </div>
         </div>
       </main>
-      
+
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

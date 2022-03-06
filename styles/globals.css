@@ -2,7 +2,8 @@
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
-  src: local(sans-serif), url("../public/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+  src: local(sans-serif),
+    url("../public/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
   font-display: swap;
 }
 
@@ -17,11 +18,11 @@ body {
 }
 
 :root {
-  --primary: #2E3435;
-  --light-primary : #464B4D;
-  --text: #FFFFFF;
-  --fancy-color: linear-gradient(45deg, #00FF85, #00ECC1);
-  --fancy-color-white: linear-gradient(45deg, #DDFDFF, #FFFFFF);
+  --primary: #2e3435;
+  --light-primary: #464b4d;
+  --text: #ffffff;
+  --fancy-color: linear-gradient(45deg, #00ff85, #00ecc1);
+  --fancy-color-white: linear-gradient(45deg, #ddfdff, #ffffff);
   --extra-large-font: 6rem;
   --large-font: 4rem;
   --medium-font: 3rem;
@@ -34,12 +35,12 @@ body {
 }
 
 #fancy-text {
-  background-image: linear-gradient(45deg, #00FF85, #00ECC1);
+  background-image: linear-gradient(45deg, #00ff85, #00ecc1);
   background-size: 100%;
   background-clip: text;
   -webkit-background-clip: text;
   -moz-background-clip: text;
-  -webkit-text-fill-color: transparent; 
+  -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
 }
 

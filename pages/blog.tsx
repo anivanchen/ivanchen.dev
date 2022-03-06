@@ -1,17 +1,16 @@
-import type { NextPage } from "next"
-import Head from "next/head"
-import Image from "next/image"
-import Link from "next/link"
-import { useEffect, useState } from "react"
-import Footer from "../components/Footer"
-import Header from "../components/Header"
-import styles from "../styles/About.module.css"
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import styles from "../styles/About.module.css";
 
 const Blog: NextPage = () => {
-
   // const [data, setData] = useState({});
 
-  // async function fetchData() { 
+  // async function fetchData() {
   //   await fetch("api/getMediumArticles")
   //     .then(res => res.json())
   //     .then(data => {
@@ -43,10 +42,10 @@ const Blog: NextPage = () => {
 
         <p className={styles.title}>Page Coming Soon...</p>
       </main>
-      
+
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;

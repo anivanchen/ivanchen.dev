@@ -12,11 +12,12 @@
 p.title {
   margin: 2rem;
 }
-.main > p, .list > li {
+.main > p,
+.list > li {
   font-size: var(--small-font);
 }
 .link {
-  font-size: var(--small-font);;
+  font-size: var(--small-font);
 }
 .inline > * {
   object-position: bottom;
@@ -35,7 +36,8 @@ div.inline {
   justify-content: center;
 }
 
-.title, .heading {
+.title,
+.heading {
   margin: 2.5rem;
   font-size: var(--medium-font);
   text-align: center;
@@ -52,7 +54,7 @@ div.inline {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   margin: 0 auto;
   border-radius: 50%;
   overflow: hidden;
@@ -80,7 +82,7 @@ div.inline {
 
   border-radius: 16px;
   background-image: var(--fancy-color);
-  
+
   color: var(--primary);
   font-size: var(--small-font);
 
@@ -91,7 +93,7 @@ div.inline {
   transform: scale(0.98);
   cursor: pointer;
 }
-.button:active{
+.button:active {
   opacity: 0.8;
 }
 
@@ -130,7 +132,11 @@ div.inline {
     align-items: center;
     gap: 0.75rem;
   }
-  .button, .icon, .button:hover, .button:hover > .icon, .button:active > .icon {
+  .button,
+  .icon,
+  .button:hover,
+  .button:hover > .icon,
+  .button:active > .icon {
     transition: none;
     transform: none;
   }

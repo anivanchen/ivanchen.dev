@@ -1,5 +1,5 @@
-import type { NextPage } from "next"
-import styles from "../styles/Footer.module.css"
+import type { NextPage } from "next";
+import styles from "../styles/Footer.module.css";
 
 const Footer: NextPage = () => {
   return (
@@ -10,10 +10,10 @@ const Footer: NextPage = () => {
         rel="noopener noreferrer"
       >
         Designed and built by&nbsp;
-        <p id='fancy-text'>@anivanchen</p>
+        <p id="fancy-text">@anivanchen</p>
       </a>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

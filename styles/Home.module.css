@@ -47,7 +47,7 @@
 }
 
 .link {
-  font-size: var(--small-font);;
+  font-size: var(--small-font);
 }
 .inline > * {
   object-position: bottom;
@@ -71,7 +71,7 @@ div.inline {
 
   border-radius: 16px;
   background-image: var(--fancy-color);
-  
+
   color: var(--primary);
   font-size: var(--small-font);
 
@@ -81,7 +81,7 @@ div.inline {
   transform: scale(0.98);
   cursor: pointer;
 }
-.button:active{
+.button:active {
   opacity: 0.8;
 }
 
@@ -158,7 +158,11 @@ div.inline {
     margin: 2rem 0;
     font-size: var(--small-font);
   }
-  .button, .icon, .button:hover, .button:hover > .icon, .button:active > .icon {
+  .button,
+  .icon,
+  .button:hover,
+  .button:hover > .icon,
+  .button:active > .icon {
     transition: none;
     transform: none;
   }

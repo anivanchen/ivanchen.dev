@@ -1,13 +1,12 @@
-import type { NextPage } from "next"
-import Head from "next/head"
-import Image from "next/image"
-import Link from "next/link"
-import Footer from "../components/Footer"
-import Header from "../components/Header"
-import styles from "../styles/About.module.css"
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import styles from "../styles/About.module.css";
 
 const Projects: NextPage = (props) => {
-
   return (
     <div className={styles.container}>
       <Head>
@@ -19,7 +18,6 @@ const Projects: NextPage = (props) => {
       <Header />
 
       <main className={styles.main}>
-
         <p className={styles.title}>Page Coming Soon...</p>
 
         {/* <div className={styles.project}>
@@ -58,22 +56,21 @@ const Projects: NextPage = (props) => {
           </a>
         </div> */}
       </main>
-      
+
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export async function getStaticProps() { 
-
-  const response = await fetch('https://api.github.com/users/anivanchen/repos')
-  const repos = await response.json()
+export async function getStaticProps() {
+  const response = await fetch("https://api.github.com/users/anivanchen/repos");
+  const repos = await response.json();
 
   return {
     props: {
-      repos
-    }
-  }
+      repos,
+    },
+  };
 }
 
-export default Projects
+export default Projects;
