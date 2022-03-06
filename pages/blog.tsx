@@ -31,7 +31,10 @@ const Blog: NextPage = () => {
     <div className={styles.container}>
       <Head>
         <title>Ivan Chen | Blog</title>
-        <meta name="description" content="" />
+        <meta
+          name="description"
+          content="Ivan Chen's portfolio, built with Next.js and Typescript."
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
