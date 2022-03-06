@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  background-color: var(--primary);
+  color: var(--text);
+  scroll-behavior: smooth;
+}
+
+:root {
+  --primary: #2E3435;
+  --light-primary : #464B4D;
+  --text: #FFFFFF;
+  --fancy-color: linear-gradient(45deg, #00FF85, #00ECC1);
+  --fancy-color-white: linear-gradient(45deg, #DDFDFF, #FFFFFF);
+  --extra-large-font: 6rem;
+  --large-font: 4rem;
+  --medium-font: 3rem;
+  --small-font: 1.25rem;
+  --tiny-font: 1rem;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+#fancy-text {
+  background-image: linear-gradient(45deg, #00FF85, #00ECC1);
+  background-size: 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  padding: 0 1rem;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}

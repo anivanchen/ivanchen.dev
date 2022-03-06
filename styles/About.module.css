@@ -1,0 +1,140 @@
+.container {
+  min-height: 100vh;
+}
+
+.main {
+  min-height: calc(100vh - 256px);
+  padding: 0rem 32rem;
+
+  text-align: left;
+}
+
+p.title {
+  margin: 2rem;
+}
+.main > p, .list > li {
+  font-size: var(--small-font);
+}
+.link {
+  font-size: var(--small-font);;
+}
+.inline > * {
+  object-position: bottom;
+}
+a.inline {
+  display: flex;
+  gap: 0.5rem;
+}
+div.inline {
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+.centered {
+  display: flex;
+  justify-content: center;
+}
+
+.title, .heading {
+  margin: 2.5rem;
+  font-size: var(--medium-font);
+  text-align: center;
+}
+.heading {
+  margin: 2rem 0;
+  text-align: left;
+}
+
+.imageContainer {
+  max-width: max-content;
+  max-height: max-content;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.item {
+  margin: 0 0 4rem 0;
+}
+
+.techs {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+
+  font-size: var(--small-font);
+}
+
+.button {
+  width: 16rem;
+  height: 4rem;
+  padding: 0 2rem;
+
+  display: flex;
+  align-items: center;
+
+  border-radius: 16px;
+  background-image: var(--fancy-color);
+  
+  color: var(--primary);
+  font-size: var(--small-font);
+
+  transition: all 250ms ease;
+  overflow: hidden;
+}
+.button:hover {
+  transform: scale(0.98);
+  cursor: pointer;
+}
+.button:active{
+  opacity: 0.8;
+}
+
+.icon {
+  margin-left: 0.5rem;
+  transition: all 250ms ease;
+}
+.button:hover > .icon {
+  transform: translateX(0.25rem);
+}
+.button:active > .icon {
+  transform: translateX(0.5rem);
+}
+
+@media screen and (max-width: 1480px) {
+  .main {
+    padding: 0 4rem;
+    grid-template-columns: 1fr;
+  }
+  .mainContent {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    padding: 0;
+    align-self: center;
+  }
+  .mainContent .text {
+    margin: 2rem 0;
+    font-size: var(--small-font);
+  }
+}
+
+@media screen and (max-width: 840px) {
+  div.inline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .button, .icon, .button:hover, .button:hover > .icon, .button:active > .icon {
+    transition: none;
+    transform: none;
+  }
+  .button:active {
+    transform: scale(0.98);
+  }
+}

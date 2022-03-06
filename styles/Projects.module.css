@@ -1,0 +1,113 @@
+.container {
+  min-height: 100vh;
+}
+
+.main {
+  min-height: calc(100vh - 256px);
+  padding: 0rem 16rem;
+
+  text-align: left;
+}
+
+.title {
+  margin: 0.75rem 0 0 0;
+  padding: 0;
+  font-size: calc(var(--medium-font) - 0.5rem);
+  line-height: 1.8rem;
+}
+
+.project {
+  height: 402px;
+  overflow: hidden;
+}
+
+.descriptionBar {
+  height: 100px;
+  width: 70%;
+  padding: 1.5rem;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--light-primary);
+  border-radius: 0.5rem;
+}
+
+.imageContainer { 
+  width: 30%;
+
+  position: absolute;
+
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+}
+div.inline {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+
+  object-position: bottom;
+}
+.inline > p {
+  margin: 0;
+}
+
+.button {
+  width: 16rem;
+  height: 4rem;
+  padding: 0 2rem;
+
+  display: flex;
+  align-items: center;
+
+  border-radius: 16px;
+  background-image: var(--fancy-color);
+  
+  color: var(--primary);
+  font-size: var(--small-font);
+
+  transition: all 250ms ease;
+  overflow: hidden;
+}
+.button:hover {
+  transform: scale(0.98);
+  cursor: pointer;
+}
+.button:active{
+  opacity: 0.8;
+}
+
+.icon {
+  margin-left: 0.5rem;
+  transition: all 250ms ease;
+}
+.button:hover > .icon {
+  transform: translateX(0.25rem);
+}
+.button:active > .icon {
+  transform: translateX(0.5rem);
+}
+
+@media screen and (max-width: 1480px) {
+  .main {
+    padding: 0 4rem;
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media screen and (max-width: 840px) {
+  .button, .icon, .button:hover, .button:hover > .icon, .button:active > .icon {
+    transition: none;
+    transform: none;
+  }
+  .button:active {
+    transform: scale(0.98);
+  }
+}
