@@ -1,70 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: local(sans-serif),
+    url("../public/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  overflow-x: hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  font-family: "Roboto", sans-serif;
+  background-color: var(--primary);
+  color: var(--text);
   scroll-behavior: smooth;
-  font-family: 'Montserrat', sans-serif;
-  background-color: var(--white);
 }
-html::-webkit-scrollbar { display: none; }
+
+:root {
+  --primary: #2e3435;
+  --light-primary: #464b4d;
+  --text: #ffffff;
+  --fancy-color: linear-gradient(45deg, #00ff85, #00ecc1);
+  --fancy-color-white: linear-gradient(45deg, #ddfdff, #ffffff);
+  --extra-large-font: 6rem;
+  --large-font: 4rem;
+  --medium-font: 3rem;
+  --small-font: 1.25rem;
+  --tiny-font: 1rem;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+#fancy-text {
+  background-image: linear-gradient(45deg, #00ff85, #00ecc1);
+  background-size: 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
 a {
   color: inherit;
+  text-decoration: none;
 }
-p {
-  font-size: calc(1.3vh + 0.2vw);
-}
-h1 {
-  font-size: calc(6vh + 1.5vw);
-}
-h2 {
-  font-size: calc(2.3vh + 0.7vw);
-}
+
 ul {
-  list-style-type: none;
+  padding: 0 1rem;
+  margin: 0;
 }
-li {
-  float: left;
-}
-li a {
-  display: block;
-  padding: 4.25vh 30px;
-}
-button {
-  font-size: 1.3vh;
-  margin: 25px;
-  padding: 10px 50px;
-  border-radius: 10px;
-  border: none;
-  transition: transform 300ms ease;
-}
-button:hover {
-  transform: scale(1.05);
-}
-button:active {
-  color: var(--red);
-}
-img {
-  border-radius: 50%;
-}
+
 * {
   box-sizing: border-box;
-  --red: #FF6666;
-  --white: white;
-  color: #2D2926FF;
-  cursor: none;
-}
-@media screen and (max-width: 1920px) {
-  button {
-    display: none;
-  }
-}
-@media screen and (max-width: 960px) {
-  * {
-    text-align: center;
-    cursor: auto !important;
-  }
 }
