@@ -22,6 +22,7 @@ const Projects: NextPage = (props) => {
 
       <main className={styles.main}>
         <p className={styles.title}>Page Coming Soon...</p>
+        <a className={styles.centered} href="https://github.com/anivanchen"><h2>@anivanchen</h2></a>
 
         {/* <div className={styles.project}>
           <div className={styles.githubContent}>
