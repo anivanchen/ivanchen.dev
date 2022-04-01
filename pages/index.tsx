@@ -100,9 +100,10 @@ const Home: NextPage = () => {
             I’ve been getting into Typescript and Java. In addition, I am fairly
             well versed in IT infrastructure.
           </p>
-          <Link href="/projects" passHref>
+          <Link href="/about" passHref>
+            {/* change to projects when completed */}
             <div className={styles.button}>
-              <p>Projects</p>
+              <p>About</p>
               <div className={styles.icon}>
                 <Image
                   src="/toProjects.svg"

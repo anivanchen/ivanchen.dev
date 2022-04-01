@@ -162,11 +162,9 @@ div.inline {
   .icon,
   .button:hover,
   .button:hover > .icon,
-  .button:active > .icon {
+  .button:active > .icon,
+  .button:active {
     transition: none;
     transform: none;
-  }
-  .button:active {
-    transform: scale(0.98);
   }
 }
