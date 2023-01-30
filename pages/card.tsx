@@ -48,20 +48,20 @@ const Card: NextPage = () => {
             <div className={styles.back}>
               <div className={styles.githubUserContent}>
                 <div className={styles.item}>
-                  <h1 id="fancy-text">27</h1>
+                  <h1 id="fancy-text">31</h1>
                   <p>repos</p>
                 </div>
                 <div className={styles.item}>
-                  <h1 id="fancy-text">774</h1>
+                  <h1 id="fancy-text">1,140</h1>
                   <p>contributions</p>
                 </div>
                 <div className={styles.item}>
-                  <h1 id="fancy-text">11</h1>
+                  <h1 id="fancy-text">17</h1>
                   <p>followers</p>
                 </div>
               </div>
               <div className={styles.orgs}>
-                <a href="mailto:ivanchen07@gmail.com">ivanchen07@gmail.com</a>
+                <a href="mailto:me@ivanchen.dev">me@ivanchen.dev</a>
                 <p>@stuypulse | @stuysu | @stuyspectator</p>
               </div>
             </div>

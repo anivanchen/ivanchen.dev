@@ -22,6 +22,9 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <div className={styles.mainContent}>
+          <h2 style={{fontSize: "2rem", marginBottom: "0"}}>
+            Hi! I'm
+          </h2>
           <h1 className={styles.title} id="fancy-text">
             Ivan Chen
           </h1>
@@ -77,7 +80,7 @@ const Home: NextPage = () => {
             </div>
           </div>
           <p className={styles.text}>
-            Hi! My name is Ivan, and I am a sophomore at{" "}
+            I'm a junior at{" "}
             <a href="https://stuy.enschool.org/" id="fancy-text">
               Stuyvesant High School
             </a>
@@ -86,7 +89,7 @@ const Home: NextPage = () => {
               @StuyPulse
             </a>{" "}
             and a web developer {""}
-            <a href="https://sophomore.stuysu.org" id="fancy-text">
+            <a href="https://junior.stuysu.org" id="fancy-text">
               @StuySU
             </a>{" "}
             and{" "}
@@ -96,9 +99,9 @@ const Home: NextPage = () => {
             .
           </p>
           <p className={styles.text}>
-            I primarily work with Python and Javascript with NextJS, but lately,
-            I’ve been getting into Typescript and Java. In addition, I am fairly
-            well versed in IT infrastructure.
+            I'm passionate about robotics, web development, IT infrastructure,
+            embedded systems, game design, and 3D modeling. I use Java, TypeScript,
+            Next.js, Unity, and Blender for my projects.
           </p>
           <Link href="/about" passHref>
             {/* change to projects when completed */}
