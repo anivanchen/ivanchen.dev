@@ -42,10 +42,18 @@ const About: NextPage = () => {
   }> = [
     {
       title: "Director of IT",
+      company: "StuySU Junior Caucus",
+      link: "https://junior.stuysu.org",
+      start: "August 2022",
+      end: "Current",
+      contributions: [],
+    },
+    {
+      title: "Director of IT",
       company: "StuySU Sophomore Caucus",
       link: "https://sophomore.stuysu.org",
       start: "September 2021",
-      end: "Current",
+      end: "July 2022",
       contributions: [
         "Modernize and redesign the CMS of the Sophomore Caucus website.",
         "Worked on loading speed optimization of the website.",
@@ -53,21 +61,29 @@ const About: NextPage = () => {
       ],
     },
     {
-      title: "Software Engineer / Webmaster",
+      title: "Vice President of Software Engineering",
       company: "StuyPulse",
       link: "https://stuypulse.com",
-      start: "October 2020",
+      start: "May 2022",
       end: "Current",
-      contributions: [
-        "Maintain the StuyPulse website with most updated information.",
-        "Wrote concise documentation to guide future members on various topics related to both physical hardware and software.",
-        "Created material used to teach new members programming using Java, WPILib, and StuyLib.",
-        "Helped teach new members Java, WPILib, and StuyLib.",
-        "Co-led team to successfully implement autonomous logic for a subsystem of the 2022 season robot.",
-      ],
-    },
+      contributions: [],
+      },
+      {
+        title: "Software Engineer / Webmaster",
+        company: "StuyPulse",
+        link: "https://stuypulse.com",
+        start: "October 2020",
+        end: "May 2022",
+        contributions: [
+          "Maintain the StuyPulse website with most updated information.",
+          "Wrote concise documentation to guide future members on various topics related to both physical hardware and software.",
+          "Created material used to teach new members programming using Java, WPILib, and StuyLib.",
+          "Helped teach new members Java, WPILib, and StuyLib.",
+          "Co-led team to successfully implement autonomous logic for a subsystem of the 2022 season robot.",
+        ],
+      },
     {
-      title: "Fullstack Developer / Lead Designer",
+      title: "Lead Developer & Designer",
       company: "The Stuyvesant Spectator",
       link: "https://stuyspec.com",
       start: "November 2021",
@@ -184,7 +200,7 @@ const About: NextPage = () => {
         ))}
 
         <div className={styles.centered}>
-          <a href="mailto:ivanchen07@gmail.com">
+          <a href="mailto:me@ivanchen.dev">
             <div className={styles.button + " " + styles.centered}>
               <p>Contact Me</p>
               <div className={styles.icon}>
