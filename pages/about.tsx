@@ -41,6 +41,39 @@ const About: NextPage = () => {
     contributions: Array<string>;
   }> = [
     {
+      title: "Vice President of Software Engineering",
+      company: "StuyPulse",
+      link: "https://stuypulse.com",
+      start: "May 2022",
+      end: "Current",
+      contributions: [],
+    },
+    {
+        title: "Software Engineer / Webmaster",
+        company: "StuyPulse",
+        link: "https://stuypulse.com",
+        start: "October 2020",
+        end: "May 2022",
+        contributions: [
+          "Maintain the StuyPulse website with most updated information.",
+          "Wrote concise documentation to guide future members on various topics related to both physical hardware and software.",
+          "Created material used to teach new members programming using Java, WPILib, and StuyLib.",
+          "Helped teach new members Java, WPILib, and StuyLib.",
+          "Co-led team to successfully implement autonomous logic for a subsystem of the 2022 season robot.",
+        ],
+    },
+    {
+      title: "Lead Developer & Designer",
+      company: "The Stuyvesant Spectator",
+      link: "https://stuyspec.com",
+      start: "November 2021",
+      end: "Current",
+      contributions: [
+        "Wrote modern, performant, and maintainable code for a redesign of the existing website.",
+        "Worked on the design and prototype of the entire website.",
+      ],
+    },
+    {
       title: "Director of IT",
       company: "StuySU Junior Caucus",
       link: "https://junior.stuysu.org",
@@ -59,40 +92,7 @@ const About: NextPage = () => {
         "Worked on loading speed optimization of the website.",
         "Updated landing page to reflect new school year.",
       ],
-    },
-    {
-      title: "Vice President of Software Engineering",
-      company: "StuyPulse",
-      link: "https://stuypulse.com",
-      start: "May 2022",
-      end: "Current",
-      contributions: [],
-      },
-      {
-        title: "Software Engineer / Webmaster",
-        company: "StuyPulse",
-        link: "https://stuypulse.com",
-        start: "October 2020",
-        end: "May 2022",
-        contributions: [
-          "Maintain the StuyPulse website with most updated information.",
-          "Wrote concise documentation to guide future members on various topics related to both physical hardware and software.",
-          "Created material used to teach new members programming using Java, WPILib, and StuyLib.",
-          "Helped teach new members Java, WPILib, and StuyLib.",
-          "Co-led team to successfully implement autonomous logic for a subsystem of the 2022 season robot.",
-        ],
-      },
-    {
-      title: "Lead Developer & Designer",
-      company: "The Stuyvesant Spectator",
-      link: "https://stuyspec.com",
-      start: "November 2021",
-      end: "Current",
-      contributions: [
-        "Wrote modern, performant, and maintainable code for a redesign of the existing website.",
-        "Worked on the design and prototype of the entire website.",
-      ],
-    },
+    }
   ];
 
   return (
