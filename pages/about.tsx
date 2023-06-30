@@ -45,21 +45,26 @@ const About: NextPage = () => {
       company: "StuyPulse",
       link: "https://stuypulse.com",
       start: "May 2022",
-      end: "Current",
-      contributions: [],
+      end: "May 2023",
+      contributions: [
+        "Led a team of 130+ members through the FRC season, to multiple competitions, and world championships.",
+        "Managed a department of 40+ members to write clean and functional code.",
+        "Worked extensively with members and fellow leadership members to design, build, program, and test world-class FRC robots with advanced controls and engineering knowledge.",
+        "Led efforts in exploring innovative technologies through dedicated research initiatives.",
+      ],
     },
     {
         title: "Software Engineer / Webmaster",
         company: "StuyPulse",
         link: "https://stuypulse.com",
         start: "October 2020",
-        end: "May 2022",
-        contributions: [
-          "Maintain the StuyPulse website with most updated information.",
-          "Wrote concise documentation to guide future members on various topics related to both physical hardware and software.",
-          "Created material used to teach new members programming using Java, WPILib, and StuyLib.",
-          "Helped teach new members Java, WPILib, and StuyLib.",
-          "Co-led team to successfully implement autonomous logic for a subsystem of the 2022 season robot.",
+        end: "Current",
+      contributions: [
+        "Developed and tested the code for two highly esteemed robots, ranked #24 and #26 in the world during the 2022 and 2023 seasons.",
+        "Mentored newcomers to the team and taught them programming, vital robotics concepts, and advanced topics.",
+        "Took on the responsibility of creating educational resources to impart knowledge to new team members and ensure the preservation of our existing expertise.",  
+        "Maintained the StuyPulse website with most updated information.",
+        "Wrote concise documentation to guide future members on various topics related to both physical hardware and software.",
         ],
     },
     {
@@ -70,7 +75,8 @@ const About: NextPage = () => {
       end: "Current",
       contributions: [
         "Wrote modern, performant, and maintainable code for a redesign of the existing website.",
-        "Worked on the design and prototype of the entire website.",
+        "Led effort to completely redesign and build a new website that was more stable and featured a modern new design.",
+        "Reworked the workflow of uploading articles to the website for greater efficiency and a better user experience.",
       ],
     },
     {
@@ -79,7 +85,9 @@ const About: NextPage = () => {
       link: "https://junior.stuysu.org",
       start: "August 2022",
       end: "Current",
-      contributions: [],
+      contributions: [
+        "Co-led and worked on creating a new website design.",
+      ],
     },
     {
       title: "Director of IT",
@@ -91,6 +99,7 @@ const About: NextPage = () => {
         "Modernize and redesign the CMS of the Sophomore Caucus website.",
         "Worked on loading speed optimization of the website.",
         "Updated landing page to reflect new school year.",
+        "Led a project to create a centralized search engine for information in the school.",
       ],
     }
   ];
@@ -148,15 +157,16 @@ const About: NextPage = () => {
           ))}
         </div>
         <p>
-          I’m a passionate software engineer and web developer who loves playing
-          around with new technologies for fun. I enjoy playing around with IT
-          and writing code to automate various actions I do on a daily basis. As
-          a student, I don’t have much time to program every day, but I try my
-          best to write at least a couple lines of code a day. I’m also an avid
-          music listener.
+          I'm currently a rising senior at Stuyvesant High School.
+          I'm currently a Lead Software Engineer at StuyPulse and
+          was the Vice President of Software Engineering for the
+          2023 FRC season. I'm also currently a part of The Stuyvesant
+          Spectator as the Lead Web Developer. I was involved in the
+          Stuyvesant Student Union as a Director of IT for the Sophomore
+          and Junior caucuses.
         </p>
 
-        <p className={styles.title}>Technologies I use:</p>
+        {/* <p className={styles.title}>Technologies I use:</p>
         <div className={styles.techs}>
           <ul>
             <li>JavaScript</li>
@@ -175,7 +185,7 @@ const About: NextPage = () => {
             <li>CSS</li>
             <li>Heroku</li>
           </ul>
-        </div>
+        </div> */}
 
         <h2 className={styles.heading} id="fancy-text">
           Experience:
