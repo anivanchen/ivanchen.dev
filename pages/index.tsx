@@ -23,7 +23,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <div className={styles.mainContent}>
           <h2 style={{fontSize: "2rem", marginBottom: "0"}}>
-            Hi! I'm
+            Hi! I&aposm
           </h2>
           <h1 className={styles.title} id="fancy-text">
             Ivan Chen
@@ -80,7 +80,7 @@ const Home: NextPage = () => {
             </div>
           </div>
           <p className={styles.text}>
-            I'm a junior at{" "}
+            I&aposm a junior at{" "}
             <a href="https://stuy.enschool.org/" id="fancy-text">
               Stuyvesant High School
             </a>
@@ -99,7 +99,7 @@ const Home: NextPage = () => {
             .
           </p>
           <p className={styles.text}>
-            I'm passionate about robotics, web development, IT infrastructure,
+            I&aposm passionate about robotics, web development, IT infrastructure,
             embedded systems, game design, and 3D modeling. I use Java, TypeScript,
             Next.js, Unity, and Blender for my projects.
           </p>
