@@ -157,10 +157,10 @@ const About: NextPage = () => {
           ))}
         </div>
         <p>
-          I'm currently a rising senior at Stuyvesant High School.
-          I'm currently a Lead Software Engineer at StuyPulse and
+          I&apos;m currently a rising senior at Stuyvesant High School.
+          I&apos;m currently a Lead Software Engineer at StuyPulse and
           was the Vice President of Software Engineering for the
-          2023 FRC season. I'm also currently a part of The Stuyvesant
+          2023 FRC season. I&apos;m also currently a part of The Stuyvesant
           Spectator as the Lead Web Developer. I was involved in the
           Stuyvesant Student Union as a Director of IT for the Sophomore
           and Junior caucuses.
