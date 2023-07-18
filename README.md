@@ -1,4 +1,4 @@
-# anivanchen.github.io
+# ivanchen.dev
 
 My personal website. Redesigned with Next and deployed to Github Pages.
 
