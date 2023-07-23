@@ -1,9 +1,9 @@
 {
-  "name": "anivanchen.github.io",
+  "name": "ivanchen.dev",
   "version": "3.0.0",
   "private": false,
   "license": "MIT",
-  "homepage": "https://anivanchen.github.io",
+  "homepage": "https://ivanchen.dev",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -24,7 +24,6 @@
     "@types/react": "18.0.17",
     "eslint": "8.21.0",
     "eslint-config-next": "^13.4.12",
-    "gh-pages": "^4.0.0",
     "prettier": "^2.7.1",
     "typescript": "4.7.4"
   }
