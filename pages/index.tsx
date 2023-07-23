@@ -103,7 +103,7 @@ const Home: NextPage = () => {
             embedded systems, game design, and 3D modeling. I use Java, TypeScript,
             Next.js, Unity, and Blender for my projects.
           </p>
-          <Link href="/about" passHref>
+          <Link href="/about" passHref legacyBehavior>
             {/* change to projects when completed */}
             <div className={styles.button}>
               <p>About</p>
