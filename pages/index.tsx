@@ -13,7 +13,7 @@ const Home: NextPage = () => {
         <title>Ivan Chen</title>
         <meta
           name="description"
-          content="Ivan Chen's portfolio, built with Next.js and Typescript."
+          content="Ivan Chen's personal website. Ivan Chen is a high school student at Stuyvesant High School. Ivan is also a software engineer based in New York City, working at StuyPulse and The Stuyvesant Spectator. He's also working for the Chinatown East Neighborhood Council."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -111,8 +111,8 @@ const Home: NextPage = () => {
                 <Image
                   src="/toProjects.svg"
                   alt="link"
-                  height="14px"
-                  width="14px"
+                  height={14}
+                  width={14}
                 />
               </div>
             </div>
@@ -122,8 +122,8 @@ const Home: NextPage = () => {
           <Image
             src="https://avatars.githubusercontent.com/u/51217025"
             alt="pfp"
-            width="384px"
-            height="384px"
+            width={384}
+            height={384}
           />
         </div>
       </main>

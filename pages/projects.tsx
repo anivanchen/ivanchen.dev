@@ -13,7 +13,7 @@ const Projects: NextPage = (props) => {
         <title>Ivan Chen | Projects</title>
         <meta
           name="description"
-          content="Ivan Chen's portfolio, built with Next.js and Typescript."
+          content="Ivan Chen's personal website. Ivan Chen is a high school student at Stuyvesant High School. Ivan is also a software engineer based in New York City, working at StuyPulse and The Stuyvesant Spectator. He's also working for the Chinatown East Neighborhood Council."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -55,7 +55,7 @@ const Projects: NextPage = (props) => {
           <a href="mailto:ivanchen07@gmail.com">
             <div className={styles.button + " " + styles.centered}>
               <p>About Me</p>
-              <div className={styles.icon}><Image src="/link-dark.svg" alt="link" height="14px" width="14px" /></div>
+              <div className={styles.icon}><Image src="/link-dark.svg" alt="link" height={14} width={14} /></div>
             </div>
           </a>
         </div> */}
