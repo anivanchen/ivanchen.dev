@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -103,7 +103,7 @@ const Home: NextPage = () => {
             embedded systems, game design, and 3D modeling. I use Java, TypeScript,
             Next.js, Unity, and Blender for my projects.
           </p>
-          <Link href="/about" passHref>
+          <Link href="/about" passHref legacyBehavior>
             {/* change to projects when completed */}
             <div className={styles.button}>
               <p>About</p>
