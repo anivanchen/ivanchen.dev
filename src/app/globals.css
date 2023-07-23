@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-hex: #FFFFFF;
+  --background-hex: #2E3435;
+  --special-gradient: -webkit-linear-gradient(#00ff73, #00ffdd);
+}
+
+body {
+  color: var(--foreground-hex);
+  background: var(--background-hex);
+}
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+h1 {
+  font-size: 6rem;
+  background: var(--special-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  font-size: 4rem;
+}
+
+h3 {
+  font-size: 3rem;
+}
+
+h4 {
+  font-size: 2rem;
+}
+
+h5 {
+  font-size: 1.5rem;
+}
+
+h6 {
+  font-size: 1.25rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+#special-text {
+  background: var(--special-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#button {
+  color: var(--background-hex);
+  background: var(--special-gradient);
+  padding: 1rem 4rem;
+  border-radius: .5rem;
+}
