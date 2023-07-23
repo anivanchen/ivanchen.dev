@@ -13,7 +13,7 @@ const Card: NextPage = () => {
         <title>Ivan Chen | Card</title>
         <meta
           name="description"
-          content="Ivan Chen's portfolio, built with Next.js and Typescript."
+          content="Ivan Chen's personal website. Ivan Chen is a high school student at Stuyvesant High School. Ivan is also a software engineer based in New York City, working at StuyPulse and The Stuyvesant Spectator. He's also working for the Chinatown East Neighborhood Council."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -29,8 +29,8 @@ const Card: NextPage = () => {
                   <Image
                     src="https://avatars.githubusercontent.com/u/51217025"
                     alt="pfp"
-                    width="192px"
-                    height="192px"
+                    width={192}
+                    height={192}
                   />
                 </div>
               </div>
