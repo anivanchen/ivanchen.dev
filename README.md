@@ -1,20 +1,36 @@
-# ivanchen.dev
+# Welcome to Remix + Vite!
 
-My personal website. Redesigned with Next and deployed to Github Pages.
+📖 See the [Remix docs](https://remix.run/docs) and the [Remix Vite docs](https://remix.run/docs/en/main/guides/vite) for details on supported features.
 
-![](https://img.shields.io/github/v/release/anivanchen/anivanchen.github.io?style=for-the-badge)
-![](https://img.shields.io/github/license/anivanchen/anivanchen.github.io?color=brightgreen&style=for-the-badge)
-![](https://img.shields.io/github/workflow/status/anivanchen/anivanchen.github.io/Build%20and%20Deploy?style=for-the-badge)
+## Development
 
-## Technologies
+Run the Vite dev server:
 
-- <img src="https://img.shields.io/badge/node.js-%2343853D.svg?style=for-the-badge&logo=node.js&logoColor=white">
-- <img src="https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white">
-- <img src="https://img.shields.io/badge/githubactions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white">
-- <img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white">
+```shellscript
+npm run dev
+```
 
-[Mockup](https://www.figma.com/file/cIO9tcHHO3FtFmG3vBNw0P/Ivan-Chen?node-id=0%3A1)
+## Deployment
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+First, build your app for production:
 
-Check out the old website at the [v1-legacy](https://github.com/anivanchen/anivanchen.github.io/tree/v1-legacy) branch.
+```sh
+npm run build
+```
+
+Then run the app in production mode:
+
+```sh
+npm start
+```
+
+Now you'll need to pick a host to deploy it to.
+
+### DIY
+
+If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
+
+Make sure to deploy the output of `npm run build`
+
+- `build/server`
+- `build/client`
