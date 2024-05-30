@@ -15,16 +15,16 @@ const Header: NextPage = () => {
       <Link href="/" passHref>
         Home
       </Link>
-      <Link href="/projects" passHref>
+      {/* <Link href="/projects" passHref>
         Projects
-      </Link>
+      </Link> */}
       <Link href="/about" passHref>
         About
       </Link>
-      <Link href="/card" passHref>
+      {/* <Link href="/card" passHref>
         Card
-      </Link>
-      <Link href="/blog" passHref>
+      </Link> */}
+      <Link href="https://blog.ivanchen.dev" passHref>
         Blog
       </Link>
     </header>
