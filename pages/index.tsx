@@ -89,12 +89,12 @@ const Home: NextPage = () => {
           <p className={styles.text}>
             I&apos;m passionate about robotics, web development, IT infrastructure,
             embedded systems, game design, and 3D modeling. Over the past few years, 
-            I've grown familiar with various programming languages such as Java, 
-            C/C++, Python, and TypeScript. I've worked with technologies like OpenCV, 
+            I&apos;ve grown familiar with various programming languages such as Java, 
+            C/C++, Python, and TypeScript. I&apos;ve worked with technologies like OpenCV, 
             Next.js, Docker, SQL databases, MongoDB, the Discord API, and Swing.
           </p>
           <p className={styles.text}>
-          Currently, I'm learning about discretized computational fluid dynamics and 
+          Currently, I&apos;m learning about discretized computational fluid dynamics and 
           programming a 2D particle based fluid simulation in C++ using OpenGL for rendering.
           </p>
           <Link href="/about" passHref legacyBehavior>
