@@ -13,7 +13,7 @@ const Home: NextPage = () => {
         <title>Ivan Chen</title>
         <meta
           name="description"
-          content="Ivan Chen's personal website. Ivan Chen is a high school student at Stuyvesant High School. Ivan is also a software engineer based in New York City, working at StuyPulse and The Stuyvesant Spectator. He's also working for the Chinatown East Neighborhood Council."
+          content="Ivan Chen's personal website. Ivan Chen is a university student at the Rochester Institute of Technology majoring in Computer Engineering Technology."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -80,28 +80,22 @@ const Home: NextPage = () => {
             </div>
           </div>
           <p className={styles.text}>
-            I&apos;m a junior at{" "}
-            <a href="https://stuy.enschool.org/" id="fancy-text">
-              Stuyvesant High School
-            </a>
-            . I’m a software engineer{" "}
-            <a href="https://stuypulse.com" id="fancy-text">
-              @StuyPulse
-            </a>{" "}
-            and a web developer {""}
-            <a href="https://junior.stuysu.org" id="fancy-text">
-              @StuySU
-            </a>{" "}
-            and{" "}
-            <a href="https://stuyspec.com" id="fancy-text">
-              @StuyvesantSpectator
-            </a>
-            .
+            I&apos;m a freshman at the{" "}
+            <a href="https://rit.edu/" id="fancy-text">
+              Rochester Institute of Technology
+            </a> {" "}
+            majoring in Computer Engineering Technology.
           </p>
           <p className={styles.text}>
             I&apos;m passionate about robotics, web development, IT infrastructure,
-            embedded systems, game design, and 3D modeling. I use Java, TypeScript,
-            Next.js, Unity, and Blender for my projects.
+            embedded systems, game design, and 3D modeling. Over the past few years, 
+            I've grown familiar with various programming languages such as Java, 
+            C/C++, Python, and TypeScript. I've worked with technologies like OpenCV, 
+            Next.js, Docker, SQL databases, MongoDB, the Discord API, and Swing.
+          </p>
+          <p className={styles.text}>
+          Currently, I'm learning about discretized computational fluid dynamics and 
+          programming a 2D particle based fluid simulation in C++ using OpenGL for rendering.
           </p>
           <Link href="/about" passHref legacyBehavior>
             {/* change to projects when completed */}
