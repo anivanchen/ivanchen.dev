@@ -1,13 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: "Roboto Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
 html,
 body {
   @apply bg-white dark:bg-gray-950;
+  font-weight: bold;
+  letter-spacing: 0.1em;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
