@@ -1,15 +1,19 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
 import { Hero } from "../hero/hero"
+import { About } from "../about/about"
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Ivan Chen's Portfolio" },
+    { name: "description", content: "Ivan is a second year at the Rochester Institute of Technology (RIT) studying computer engineering." },
   ];
 }
 
 export default function Home() {
-  // return <Welcome />;
-  return <Hero />;
+  return (
+    <body>
+      <Hero /> 
+      <About />  
+    </body>
+  );
 }

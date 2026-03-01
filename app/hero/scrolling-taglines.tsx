@@ -104,7 +104,7 @@ export default function ScrollingTaglines({
         {lines.map((text, idx) => (
           <div
             key={idx}
-            className={`h-8 flex items-center text-[36px] ${idx === 3 ? 'text-secondary1 font-bold' : 'text-primary1'}`}
+            className={`h-8 flex items-center text-[36px] ${idx === 3 ? 'text-secondary2 font-bold underline decoration-4 underline-offset-8' : 'text-secondary1'}`}
             style={{ minHeight: '2rem', fontFamily: 'monospace', whiteSpace: 'pre' }}
           >
             {text}
