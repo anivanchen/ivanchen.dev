@@ -104,13 +104,13 @@ export default function ScrollingTaglines({
         {lines.map((text, idx) => (
           <div
             key={idx}
-            className={`h-8 flex items-center text-[36px] ${idx === 0 ? 'text-primary font-bold' : 'text-muted-foreground'}`}
+            className={`h-8 flex items-center text-[36px] ${idx === 3 ? 'text-secondary1 font-bold' : 'text-primary1'}`}
             style={{ minHeight: '2rem', fontFamily: 'monospace', whiteSpace: 'pre' }}
           >
             {text}
             {/* Show cursor on top line during typing, and on bottom line during deleting */}
             {((idx === 0 && cursorVisible && phase === 'typing') || (idx === LINES - 1 && cursorVisible && phase === 'deleting')) && (
-              <span className="ml-1 animate-pulse">|</span>
+              <span className="ml-1 animate-pulse text-secondary3">|</span>
             )}
           </div>
         ))}
