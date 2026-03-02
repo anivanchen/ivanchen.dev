@@ -36,7 +36,7 @@ export function Contact() {
               href="mailto:ic8437@rit.edu"
               className="text-accent2 text-3xl underline decoration-2 underline-offset-4 hover:text-accent3 transition-colors block"
             >
-              ic843 [at] rit [dot] edu
+              ic8437 [at] rit [dot] edu
             </a>
             <a 
               href="tel:9177039398"
