@@ -38,12 +38,6 @@ export function Contact() {
             >
               ic8437 [at] rit [dot] edu
             </a>
-            <a 
-              href="tel:9177039398"
-              className="text-accent2 text-3xl hover:text-accent3 transition-colors block"
-            >
-              917 703 9398
-            </a>
           </div>
         </div>
       </div>
