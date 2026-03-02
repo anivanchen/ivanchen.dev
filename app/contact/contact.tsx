@@ -21,10 +21,10 @@ export function Contact() {
             github
           </a>
           <a 
-            href="mailto:ic8437@rit.edu"
+            href="/Ivan_Chen_Resume.pdf"
             className="text-accent2 hover:text-accent3 transition-colors"
           >
-            email
+            resume
           </a>
         </div>
 
