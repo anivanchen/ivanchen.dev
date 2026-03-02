@@ -11,7 +11,7 @@ export function Hero() {
         <div className="col-span-4 flex flex-col justify-center">
           <h3 className="text-[36px] leading-none text-secondary1">hi, i&apos;m</h3>
         <h1 className="text-[196px] leading-none font-bold text-secondary2">ivan</h1>
-          <h3 className="text-[36px] leading-none text-accent2 underline decoration-4 underline-offset-8"><a href="#about">about me {'>'}</a></h3>
+          <h3 className="text-[36px] leading-none text-accent2 underline decoration-4 underline-offset-8 hover:text-accent3 transition-colors"><a href="#about">about me {'>'}</a></h3>
           
         </div>
         <div className="col-span-2 flex items-center justify-center">
