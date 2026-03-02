@@ -25,8 +25,9 @@ export function About() {
         </div>
 
         <div className="flex flex-col min-w-3/8">
-          <p className="text-secondary1 text-xl py-4">I&apos;m a sophomore at the Rochester Institute of Technology studying computer engineering.</p>
-          <p className="text-secondary1 text-xl py-4">Interested in many fields: computer engineering, robotics, autonomous decision making, quantum information theory, artificial intelligence, economics, psychology, and philosophy.</p>
+          <p className="text-secondary1 text-xl py-4">I&apos;m a <b className="text-secondary2">sophomore</b> at the <b className="text-accent2">Rochester Institute of Technology</b> studying computer engineering.</p>
+          <p className="text-secondary1 text-xl py-4">I live by the doctrine that <b className="text-secondary2">the more I learn, the less I know</b>. Alas, my curiosity has led me on this neverending path to seek greater understanding of the Truth and I&apos;ve never stopped learning and pondering since.</p>
+          <p className="text-secondary1 text-xl py-4">As such, I&apos;m interested in many fields: computer engineering, robotics, autonomous decision making, quantum information theory, artificial intelligence, economics, psychology, and philosophy.</p>
           <p className="text-secondary1 text-xl py-4">Currently Reading:{" "}
             <a href="https://press.princeton.edu/books/paperback/9780691175911/dr-eulers-fabulous-formula" 
                className="underline decoration-2 underline-offset-4">
