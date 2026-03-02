@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Roboto Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+html,
+body {
+  @apply bg-white dark:bg-gray-950;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  }
+  scroll-behavior: smooth;
+}
+
+@theme {
+  --color-primary1: #67B9E4;
+  --color-primary2: #347EA5;
+  --color-primary3: #1B3644;
+  --color-secondary1: #93CDD7;
+  --color-secondary2: #40B1C4;
+  --color-secondary3: #008AA1;
+  --color-accent1: #F9C296;
+  --color-accent2: #F8AF75;
+  --color-accent3: #EA8B3E;
+}
