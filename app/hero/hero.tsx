@@ -19,7 +19,7 @@ export function Hero() {
         </div>
         <div className="col-span-4 flex items-center">
           <div className="">
-            <ScrollingTaglines taglines={["computer engineer", "autonomous systems", "silly robotics guy", "encyclopedia", "cet [at] rit", "proud nerd", "new yorker"]} />
+            <ScrollingTaglines taglines={["new yorker", "huge nerd", "cet [at] rit", "computer engineer", "encyclopedia", "philomath", "philosopher"]} />
           </div>
         </div>
         <div className="col-span-10">

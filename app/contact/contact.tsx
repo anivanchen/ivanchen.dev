@@ -30,7 +30,7 @@ export function Contact() {
 
         <div className="flex flex-col justify-center text-center">
           <h2 className="text-secondary2 text-5xl font-bold mb-4">contact me</h2>
-          <p className="text-secondary1 text-xl mb-4">i don't bite i swear</p>
+          <p className="text-secondary1 text-xl mb-4">i don't bite</p>
           <div className="space-y-4">
             <a 
               href="mailto:ic8437@rit.edu"
