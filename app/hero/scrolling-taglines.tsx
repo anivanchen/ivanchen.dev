@@ -100,12 +100,12 @@ export default function ScrollingTaglines({
 
   return (
     <div className="relative">
-      <div className="flex flex-col justify-end h-full gap-12">
+      <div className="flex flex-col justify-end h-full gap-2 md:gap-6 lg:gap-12">
         {lines.map((text, idx) => (
           <div
             key={idx}
-            className={`h-8 flex items-center text-[36px] ${idx === 3 ? 'text-secondary2 font-bold underline decoration-4 underline-offset-8' : 'text-secondary1'}`}
-            style={{ minHeight: '2rem', fontFamily: 'monospace', whiteSpace: 'pre' }}
+            className={`h-6 md:h-8 flex items-center justify-center md:justify-start text-base md:text-2xl lg:text-[36px] ${idx === 3 ? 'text-secondary2 font-bold underline decoration-2 md:decoration-4 underline-offset-4 md:underline-offset-8' : 'text-secondary1'}`}
+            style={{ minHeight: '1.5rem', fontFamily: 'monospace', whiteSpace: 'pre' }}
           >
             {text}
             {/* Show cursor on top line during typing, and on bottom line during deleting */}
