@@ -27,3 +27,13 @@ body {
   --color-accent2: #F8AF75;
   --color-accent3: #EA8B3E;
 }
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
