@@ -10,6 +10,7 @@ export function About() {
               <li className="text-secondary1">automating <a href="https://www.ritformula.com/" className="underline decoration-2 underline-offset-4">race cars</a></li>
               <li className="text-secondary1">learning about artificial intelligence</li>
               <li className="text-secondary1">helping students learn computer engineering</li>
+              <li className="text-secondary1">an incoming SWE intern @ <a href="https://rivianvw.tech/" className="underline decoration-2 underline-offset-4">rivian / vw tech</a></li>
             </ul>
           </div>
           
