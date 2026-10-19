@@ -227,4 +227,39 @@ body {
   min-width: 0;
 }
 
+/* ==========================================================================
+   Mermaid Diagrams Text Wrapping & Overflow Prevention
+   ========================================================================== */
 
+.mermaid .node foreignObject {
+  overflow: visible !important;
+}
+
+.mermaid .node .label {
+  white-space: normal !important;
+  text-align: center !important;
+  line-height: 1.35 !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+.mermaid .node div,
+.mermaid .node span,
+.mermaid .node p {
+  white-space: normal !important;
+  text-align: center !important;
+  line-height: 1.35 !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+.mermaid .edgeLabel {
+  background-color: #FFFFFF !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  overflow: visible !important;
+}
+
+.mermaid .edgeLabel foreignObject {
+  overflow: visible !important;
+}
