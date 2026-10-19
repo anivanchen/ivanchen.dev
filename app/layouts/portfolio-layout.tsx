@@ -12,6 +12,8 @@ export function PortfolioLayout() {
     { name: "About", to: "/" },
     { name: "Experiences", to: "/experiences" },
     { name: "Projects", to: "/projects" },
+    { name: "Blog", to: "/blog" },
+    { name: "CV", to: "/Ivan_Chen_Resume.pdf", external: true },
   ];
 
   // Close mobile menu on route change
@@ -117,7 +119,7 @@ export function PortfolioLayout() {
           <NavLink
             to="/"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="text-[26px] sm:text-[30px] font-semibold text-[#009E8E] tracking-tight leading-none hover:opacity-90 transition-opacity"
+            className="text-[26px] sm:text-[30px] font-semibold text-[#009E8E] leading-none hover:opacity-90 transition-opacity"
           >
             Ivan Chen
           </NavLink>
@@ -149,17 +151,32 @@ export function PortfolioLayout() {
           </button>
         </div>
 
-        {/* Sliding Menu Panel: expands down smoothly with the header */}
+        {/* Sliding Menu Panel: expands down smoothly with the header without layout reflow */}
         <div
-          className={`flex-1 flex flex-col justify-between px-6 sm:px-10 pb-8 pt-4 overflow-y-auto transition-all duration-500 ease-in-out ${
+          className={`w-full h-[calc(100dvh-4rem)] shrink-0 flex flex-col justify-between px-6 sm:px-10 pb-8 pt-4 overflow-y-auto transition-opacity duration-300 ease-out ${
             isMobileMenuOpen
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 -translate-y-6 pointer-events-none"
+              ? "opacity-100 delay-100"
+              : "opacity-0 pointer-events-none"
           }`}
         >
-          {/* Navigation Links: Large Cal Sans */}
-          <nav className="flex flex-col gap-6 sm:gap-8 my-auto py-6 shrink-0">
+          {/* Navigation Links: Large Cal Sans with refined spacing */}
+          <nav className="flex flex-col gap-4 sm:gap-5 my-auto py-4 shrink-0">
             {navItems.map((item) => {
+              if (item.external) {
+                return (
+                  <a
+                    key={item.name}
+                    href={item.to}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-[36px] sm:text-[42px] font-semibold text-[#2E3435] hover:text-[#009E8E] transition-colors block w-fit"
+                  >
+                    {item.name}
+                  </a>
+                );
+              }
+
               const isActive =
                 item.to === "/"
                   ? location.pathname === "/" || location.pathname === "/about"
@@ -170,7 +187,7 @@ export function PortfolioLayout() {
                   key={item.name}
                   to={item.to}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`text-[36px] sm:text-[42px] font-semibold tracking-tight transition-colors block w-fit ${
+                  className={`text-[36px] sm:text-[42px] font-semibold transition-colors block w-fit ${
                     isActive
                       ? "text-[#009E8E]"
                       : "text-[#2E3435] hover:text-[#009E8E]"
@@ -202,9 +219,10 @@ export function PortfolioLayout() {
         <div className="flex flex-col lg:flex-row lg:gap-16 xl:gap-24 items-start">
           {/* Desktop Left Sidebar: full height, permanently fixed, NEVER scrolls */}
           <aside className="hidden lg:flex w-full lg:w-[320px] xl:w-[360px] shrink-0 py-8 lg:py-10 xl:py-12 lg:sticky lg:top-0 lg:h-screen lg:max-h-screen flex-col justify-between overflow-hidden">
-            <div className="flex flex-col min-h-0">
+            {/* Top Block: Title, Image, Greeting Row */}
+            <div className="flex flex-col shrink-0">
               {/* Site Name / Title: 48px */}
-              <h1 className="text-[38px] sm:text-[44px] lg:text-[48px] font-semibold text-[#009E8E] tracking-tight leading-none mb-4 lg:mb-6 shrink-0">
+              <h1 className="text-[38px] sm:text-[44px] lg:text-[48px] font-semibold text-[#009E8E] leading-none mb-4 lg:mb-6 shrink-0">
                 <NavLink to="/" className="hover:opacity-90 transition-opacity">
                   Ivan Chen
                 </NavLink>
@@ -213,8 +231,12 @@ export function PortfolioLayout() {
               {/* Profile Image Box: strictly maintains 1:1 square ratio matching sidebar width */}
               <div className="w-full aspect-square bg-[#F4F4F4] relative overflow-hidden shrink-0">
                 <img
-                  src="/pfp.jpg"
+                  src="/pfp.webp"
                   alt="Ivan Chen"
+                  width={1120}
+                  height={1120}
+                  fetchPriority="high"
+                  decoding="async"
                   className="w-full h-full object-cover object-center"
                 />
               </div>
@@ -226,31 +248,45 @@ export function PortfolioLayout() {
                 </span>
                 <SocialLinks />
               </div>
+            </div>
 
-              {/* Navigation Links: 24px */}
-              <nav className="flex flex-col gap-2 sm:gap-2.5 mt-6 lg:mt-8 xl:mt-12 shrink-0">
-                {navItems.map((item) => {
-                  const isActive =
-                    item.to === "/"
-                      ? location.pathname === "/" || location.pathname === "/about"
-                      : location.pathname.startsWith(item.to);
-
+            {/* Navigation Links: floating evenly between Nice to meet you! and Copyright */}
+            <nav className="flex flex-col gap-1 sm:gap-1 my-auto py-2 shrink-0">
+              {navItems.map((item) => {
+                if (item.external) {
                   return (
-                    <NavLink
+                    <a
                       key={item.name}
-                      to={item.to}
-                      className={`text-[22px] sm:text-[24px] font-semibold transition-colors block w-fit ${
-                        isActive
-                          ? "text-[#009E8E]"
-                          : "text-[#2E3435] hover:text-[#009E8E]"
-                      }`}
+                      href={item.to}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[22px] sm:text-[24px] font-semibold text-[#2E3435] hover:text-[#009E8E] transition-colors block w-fit"
                     >
                       {item.name}
-                    </NavLink>
+                    </a>
                   );
-                })}
-              </nav>
-            </div>
+                }
+
+                const isActive =
+                  item.to === "/"
+                    ? location.pathname === "/" || location.pathname === "/about"
+                    : location.pathname.startsWith(item.to);
+
+                return (
+                  <NavLink
+                    key={item.name}
+                    to={item.to}
+                    className={`text-[22px] sm:text-[24px] font-semibold transition-colors block w-fit ${
+                      isActive
+                        ? "text-[#009E8E]"
+                        : "text-[#2E3435] hover:text-[#009E8E]"
+                    }`}
+                  >
+                    {item.name}
+                  </NavLink>
+                );
+              })}
+            </nav>
 
             {/* Copyright: pinned at bottom */}
             <div className="pt-4 shrink-0">
@@ -267,8 +303,12 @@ export function PortfolioLayout() {
               <div className="lg:hidden mb-8 flex flex-col items-center">
                 <div className="w-[280px] sm:w-[320px] aspect-square bg-[#F4F4F4] relative overflow-hidden shrink-0 mb-3 shadow-xs">
                   <img
-                    src="/pfp.jpg"
+                    src="/pfp.webp"
                     alt="Ivan Chen"
+                    width={1120}
+                    height={1120}
+                    fetchPriority="high"
+                    decoding="async"
                     className="w-full h-full object-cover object-center"
                   />
                 </div>

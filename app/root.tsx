@@ -12,6 +12,13 @@ import type { Route } from "./+types/root";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
+  {
+    rel: "preload",
+    as: "image",
+    href: "/pfp.webp",
+    type: "image/webp",
+    fetchPriority: "high",
+  },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",
@@ -37,7 +44,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
-        <Analytics />
+        {import.meta.env.PROD && <Analytics debug={false} />}
       </body>
     </html>
   );
