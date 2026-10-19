@@ -4,7 +4,7 @@
   font-family: "Cal Sans";
   src: local("Cal Sans"),
        local("CalSans-SemiBold"),
-       url("https://cdn.jsdelivr.net/npm/cal-sans@1.0.1/fonts/CalSans-SemiBold.woff2") format("woff2");
+       url("/fonts/CalSans-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -43,6 +43,7 @@ body {
   background-color: #FFFFFF;
   color: #2E3435;
   font-family: var(--font-heading);
+  letter-spacing: 0.015em;
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
@@ -53,6 +54,7 @@ body {
 @layer utilities {
   .font-cal {
     font-family: "Cal Sans", "Inter", sans-serif;
+    letter-spacing: 0.015em;
   }
 }
 

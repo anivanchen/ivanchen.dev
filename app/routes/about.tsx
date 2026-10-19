@@ -37,6 +37,14 @@ export default function AboutRoute() {
         </p>
 
         <p>
+          I specialize in systems design, control theory, data processing, and
+          embedded intelligence. My work lives a lot on the physical-digital
+          boundary, using data to drive decision making and produce actions in
+          the real and messy world. Much of it consists of developing end-to-end
+          processes with a focus on first principles.
+        </p>
+
+        <p>
           Outside engineering, I enjoy developing a deep understanding in the
           human experience through a variety of media: literature, films, and
           TV shows. I also love badminton, beach volleyball, and snowboarding.
