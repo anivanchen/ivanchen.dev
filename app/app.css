@@ -204,4 +204,27 @@ body {
   margin-bottom: 1.5rem;
 }
 
+/* ==========================================================================
+   Horizontal Track (Filmstrip) for Peer Pages & Sliding Nav
+   ========================================================================== */
+
+.portfolio-track-container {
+  width: 100%;
+  overflow-x: clip;
+  position: relative;
+}
+
+.portfolio-track {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  will-change: transform;
+}
+
+.portfolio-slide {
+  width: 100%;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
 

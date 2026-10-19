@@ -1,12 +1,103 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { NavLink, Outlet, useLocation } from "react-router";
+import AboutRoute from "../routes/about";
+import ExperiencesRoute from "../routes/experiences";
+import ProjectsRoute from "../routes/projects";
+import BlogRoute from "../routes/blog";
+
+const ROUTE_INDEX_MAP: Record<string, number> = {
+  "/": 0,
+  "/about": 0,
+  "/experiences": 1,
+  "/projects": 2,
+  "/blog": 3,
+};
+
+function getActiveIndex(pathname: string): number {
+  if (pathname in ROUTE_INDEX_MAP) return ROUTE_INDEX_MAP[pathname];
+  if (pathname.startsWith("/blog/")) return 3;
+  return 0;
+}
 
 export function PortfolioLayout() {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const isAboutPage =
-    location.pathname === "/" || location.pathname === "/about";
+  const isArticlePage =
+    location.pathname.startsWith("/blog/") && location.pathname !== "/blog";
+  const activeIndex = getActiveIndex(location.pathname);
+
+  const [displayIndex, setDisplayIndex] = useState(activeIndex);
+  const [highlightIndex, setHighlightIndex] = useState(activeIndex);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [transitionDuration, setTransitionDuration] = useState(480);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  const currentNavIndexRef = useRef(activeIndex);
+
+  useEffect(() => {
+    setIsInitialLoad(false);
+  }, []);
+
+  // Animate track and nav items when activeIndex changes
+  useEffect(() => {
+    const fromIndex = currentNavIndexRef.current;
+    const toIndex = activeIndex;
+    const timeouts: ReturnType<typeof setTimeout>[] = [];
+
+    if (fromIndex !== toIndex) {
+      const steps = Math.abs(toIndex - fromIndex);
+      // Duration scales with step distance so skipping intermediate items feels natural
+      const duration = steps === 3 ? 640 : steps === 2 ? 520 : 420;
+      setTransitionDuration(duration);
+      setIsAnimating(true);
+      setDisplayIndex(toIndex);
+
+      const updateHighlight = (idx: number) => {
+        currentNavIndexRef.current = idx;
+        setHighlightIndex(idx);
+      };
+
+      // Staggered nav item illumination: illuminate intermediate steps as the track glides
+      if (steps > 1) {
+        const stepDirection = toIndex > fromIndex ? 1 : -1;
+        const intermediateSteps: number[] = [];
+        for (let i = fromIndex + stepDirection; i !== toIndex; i += stepDirection) {
+          intermediateSteps.push(i);
+        }
+
+        const timePerStep = duration / (steps + 1);
+        intermediateSteps.forEach((stepIdx, idx) => {
+          const t = setTimeout(() => {
+            updateHighlight(stepIdx);
+          }, timePerStep * (idx + 1));
+          timeouts.push(t);
+        });
+
+        const finalT = setTimeout(() => {
+          updateHighlight(toIndex);
+        }, timePerStep * steps);
+        timeouts.push(finalT);
+      } else {
+        updateHighlight(toIndex);
+      }
+
+      // Smooth scroll to top when changing views
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      const timer = setTimeout(() => {
+        setIsAnimating(false);
+      }, duration);
+      timeouts.push(timer);
+
+      return () => {
+        timeouts.forEach(clearTimeout);
+      };
+    } else {
+      currentNavIndexRef.current = toIndex;
+      setHighlightIndex(toIndex);
+      setDisplayIndex(toIndex);
+    }
+  }, [activeIndex]);
 
   const navItems = [
     { name: "About", to: "/" },
@@ -161,7 +252,7 @@ export function PortfolioLayout() {
         >
           {/* Navigation Links: Large Cal Sans with refined spacing */}
           <nav className="flex flex-col gap-4 sm:gap-5 my-auto py-4 shrink-0">
-            {navItems.map((item) => {
+            {navItems.map((item, index) => {
               if (item.external) {
                 return (
                   <a
@@ -170,24 +261,21 @@ export function PortfolioLayout() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-[36px] sm:text-[42px] font-semibold text-[#2E3435] hover:text-[#009E8E] transition-colors block w-fit"
+                    className="text-[36px] sm:text-[42px] font-semibold text-[#2E3435] hover:text-[#009E8E] transition-colors duration-200 block w-fit"
                   >
                     {item.name}
                   </a>
                 );
               }
 
-              const isActive =
-                item.to === "/"
-                  ? location.pathname === "/" || location.pathname === "/about"
-                  : location.pathname.startsWith(item.to);
+              const isActive = highlightIndex === index;
 
               return (
                 <NavLink
                   key={item.name}
                   to={item.to}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`text-[36px] sm:text-[42px] font-semibold transition-colors block w-fit ${
+                  className={`text-[36px] sm:text-[42px] font-semibold transition-colors duration-200 block w-fit ${
                     isActive
                       ? "text-[#009E8E]"
                       : "text-[#2E3435] hover:text-[#009E8E]"
@@ -223,7 +311,10 @@ export function PortfolioLayout() {
             <div className="flex flex-col shrink-0">
               {/* Site Name / Title: 48px */}
               <h1 className="text-[38px] sm:text-[44px] lg:text-[48px] font-semibold text-[#009E8E] leading-none mb-4 lg:mb-6 shrink-0">
-                <NavLink to="/" className="hover:opacity-90 transition-opacity">
+                <NavLink
+                  to="/"
+                  className="hover:opacity-90 transition-opacity"
+                >
                   Ivan Chen
                 </NavLink>
               </h1>
@@ -251,8 +342,8 @@ export function PortfolioLayout() {
             </div>
 
             {/* Navigation Links: floating evenly between Nice to meet you! and Copyright */}
-            <nav className="flex flex-col gap-1 sm:gap-1 my-auto py-2 shrink-0">
-              {navItems.map((item) => {
+            <nav className="flex flex-col gap-2 my-auto py-2 shrink-0">
+              {navItems.map((item, index) => {
                 if (item.external) {
                   return (
                     <a
@@ -260,23 +351,20 @@ export function PortfolioLayout() {
                       href={item.to}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[22px] sm:text-[24px] font-semibold text-[#2E3435] hover:text-[#009E8E] transition-colors block w-fit"
+                      className="text-[22px] sm:text-[24px] font-semibold text-[#2E3435] hover:text-[#009E8E] transition-colors duration-200 block w-fit"
                     >
                       {item.name}
                     </a>
                   );
                 }
 
-                const isActive =
-                  item.to === "/"
-                    ? location.pathname === "/" || location.pathname === "/about"
-                    : location.pathname.startsWith(item.to);
+                const isActive = highlightIndex === index;
 
                 return (
                   <NavLink
                     key={item.name}
                     to={item.to}
-                    className={`text-[22px] sm:text-[24px] font-semibold transition-colors block w-fit ${
+                    className={`text-[22px] sm:text-[24px] font-semibold transition-colors duration-200 block w-fit ${
                       isActive
                         ? "text-[#009E8E]"
                         : "text-[#2E3435] hover:text-[#009E8E]"
@@ -296,32 +384,95 @@ export function PortfolioLayout() {
             </div>
           </aside>
 
-          {/* Right Main Content Area: independently scrollable */}
-          <main className="flex-1 w-full py-8 lg:py-10 xl:py-12 min-w-0">
-            {/* Mobile Profile Card on About route: image width ensures "Nice to meet you!" stays on one line without overflow */}
-            {isAboutPage && (
-              <div className="lg:hidden mb-8 flex flex-col items-center">
-                <div className="w-[280px] sm:w-[320px] aspect-square bg-[#F4F4F4] relative overflow-hidden shrink-0 mb-3 shadow-xs">
-                  <img
-                    src="/pfp.webp"
-                    alt="Ivan Chen"
-                    width={1120}
-                    height={1120}
-                    fetchPriority="high"
-                    decoding="async"
-                    className="w-full h-full object-cover object-center"
-                  />
-                </div>
-                <div className="w-[280px] sm:w-[320px] flex items-center justify-between text-[#2E3435]">
-                  <span className="font-semibold text-base sm:text-lg whitespace-nowrap shrink-0">
-                    Nice to meet you!
-                  </span>
-                  <SocialLinks />
+          {/* Right Main Content Area: independently scrollable with horizontal filmstrip track */}
+          <main className="flex-1 w-full py-8 lg:py-10 xl:py-12 min-w-0 overflow-x-clip">
+            {isArticlePage ? (
+              <Outlet />
+            ) : (
+              <div className="portfolio-track-container w-full">
+                <div
+                  className="portfolio-track flex items-start w-full"
+                  style={{
+                    transform: `translateX(-${displayIndex * 100}%)`,
+                    transitionProperty: isInitialLoad ? "none" : "transform",
+                    transitionDuration: isInitialLoad ? "0ms" : `${transitionDuration}ms`,
+                    transitionTimingFunction: "cubic-bezier(0.65, 0, 0.35, 1)",
+                  }}
+                >
+                  {/* Slide 0: About */}
+                  <div
+                    className={`portfolio-slide w-full shrink-0 min-w-0 ${
+                      !isAnimating && displayIndex !== 0
+                        ? "h-0 overflow-hidden invisible"
+                        : "h-auto"
+                    }`}
+                    aria-hidden={displayIndex !== 0}
+                    inert={displayIndex !== 0}
+                  >
+                    {/* Mobile Profile Card on About route */}
+                    <div className="lg:hidden mb-8 flex flex-col items-center">
+                      <div className="w-[280px] sm:w-[320px] aspect-square bg-[#F4F4F4] relative overflow-hidden shrink-0 mb-3 shadow-xs">
+                        <img
+                          src="/pfp.webp"
+                          alt="Ivan Chen"
+                          width={1120}
+                          height={1120}
+                          fetchPriority="high"
+                          decoding="async"
+                          className="w-full h-full object-cover object-center"
+                        />
+                      </div>
+                      <div className="w-[280px] sm:w-[320px] flex items-center justify-between text-[#2E3435]">
+                        <span className="font-semibold text-base sm:text-lg whitespace-nowrap shrink-0">
+                          Nice to meet you!
+                        </span>
+                        <SocialLinks />
+                      </div>
+                    </div>
+                    <AboutRoute />
+                  </div>
+
+                  {/* Slide 1: Experiences */}
+                  <div
+                    className={`portfolio-slide w-full shrink-0 min-w-0 ${
+                      !isAnimating && displayIndex !== 1
+                        ? "h-0 overflow-hidden invisible"
+                        : "h-auto"
+                    }`}
+                    aria-hidden={displayIndex !== 1}
+                    inert={displayIndex !== 1}
+                  >
+                    <ExperiencesRoute />
+                  </div>
+
+                  {/* Slide 2: Projects */}
+                  <div
+                    className={`portfolio-slide w-full shrink-0 min-w-0 ${
+                      !isAnimating && displayIndex !== 2
+                        ? "h-0 overflow-hidden invisible"
+                        : "h-auto"
+                    }`}
+                    aria-hidden={displayIndex !== 2}
+                    inert={displayIndex !== 2}
+                  >
+                    <ProjectsRoute />
+                  </div>
+
+                  {/* Slide 3: Blog */}
+                  <div
+                    className={`portfolio-slide w-full shrink-0 min-w-0 ${
+                      !isAnimating && displayIndex !== 3
+                        ? "h-0 overflow-hidden invisible"
+                        : "h-auto"
+                    }`}
+                    aria-hidden={displayIndex !== 3}
+                    inert={displayIndex !== 3}
+                  >
+                    <BlogRoute />
+                  </div>
                 </div>
               </div>
             )}
-
-            <Outlet />
           </main>
         </div>
       </div>
