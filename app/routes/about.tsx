@@ -1,4 +1,5 @@
 import type { Route } from "./+types/about";
+import { AutonomousArena } from "../components/autonomous-arena";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -45,17 +46,22 @@ export default function AboutRoute() {
         </p>
 
         <p>
-          Outside engineering, I enjoy developing a deep understanding in the
+          Outside engineering, I enjoy developing a deep understanding of the
           human experience through a variety of media: literature, films, and
-          TV shows. I also love badminton, beach volleyball, and snowboarding.
+          TV shows. I also love photography, badminton, and snowboarding!
           Sometimes I bring a little bit of engineering magic back into making
           coffee. And during late nights, you might catch me jamming to music,
-          obsessing over something, or curled up with a book.
+          obsessing over something, or editing photos.
         </p>
       </div>
 
+      {/* Autonomous Multi-Agent Arena */}
+      <div className="mt-12 sm:mt-12">
+        <AutonomousArena id="about" rows={8} />
+      </div>
+
       {/* Updates Section: 32px */}
-      <div className="mt-16 sm:mt-20">
+      <div className="mt-16 sm:mt-12">
         <h3 className="text-[28px] sm:text-[32px] font-semibold text-[#2E3435] mb-6">
           Updates
         </h3>
