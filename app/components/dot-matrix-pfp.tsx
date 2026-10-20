@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { perfTelemetry } from "../utils/perf-telemetry";
 
 export type ViewMode = "photo" | "matrix";
 
@@ -19,7 +20,7 @@ interface SampledDot {
 
 // 384x384 canvas with 80x80 grid (~5,500 active dots preserving full background scene)
 const RESOLUTION = 384;
-const GRID_COLS = 96;
+const GRID_COLS = 32;
 const MAX_DEPTH_CUTOFF = 0.475; // 55.88% limit: cleanly isolates subject without hollowing face
 
 export function DotMatrixPfp({
@@ -27,7 +28,7 @@ export function DotMatrixPfp({
   depthSrc = "/pfp-depth.webp",
   alt = "Ivan Chen",
   className = "",
-  initialMode = "photo",
+  initialMode = "matrix",
 }: DotMatrixPfpProps) {
   const [viewMode, setViewMode] = useState<ViewMode>(initialMode);
 
@@ -65,24 +66,6 @@ export function DotMatrixPfp({
   });
   const animFrameIdRef = useRef<number | null>(null);
   const lastMousePosRef = useRef<{ clientX: number; clientY: number } | null>(null);
-  const autoSwitchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const hasManuallyToggledRef = useRef(false);
-
-  // Auto-switch to matrix mode after 5s on initial load (if user hasn't manually toggled)
-  useEffect(() => {
-    if (initialMode === "photo") {
-      autoSwitchTimeoutRef.current = setTimeout(() => {
-        if (!hasManuallyToggledRef.current) {
-          setViewMode("matrix");
-        }
-      }, 5000);
-    }
-    return () => {
-      if (autoSwitchTimeoutRef.current) {
-        clearTimeout(autoSwitchTimeoutRef.current);
-      }
-    };
-  }, [initialMode]);
 
   // Continuously track cursor position across the window so transitioning to matrix
   // mode immediately seeds the correct 3D perspective before the user moves their mouse
@@ -238,6 +221,8 @@ export function DotMatrixPfp({
     const dots = cachedDotsRef.current || sampleGrid();
     if (!dots) return;
 
+    const t0 = perfTelemetry.startFrame("DotMatrixPfp");
+
     // Retina High-DPI scaling
     const dpr = typeof window !== "undefined" ? Math.min(window.devicePixelRatio || 2, 3) : 2;
     const physicalSize = RESOLUTION * dpr;
@@ -250,12 +235,12 @@ export function DotMatrixPfp({
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
     // Clean background matching portfolio surface
-    ctx.fillStyle = "#F4F4F4";
+    ctx.fillStyle = "#FFFFFF";
     ctx.fillRect(0, 0, RESOLUTION, RESOLUTION);
 
     // 3D Parallax perspective
     const tilt = tiltRef.current;
-    const parallaxStrength = 15;
+    const parallaxStrength = 25;
     const depthCutoff = depthCutoffRef.current;
     const hasCutoff = depthCutoff > 0.005;
 
@@ -288,6 +273,8 @@ export function DotMatrixPfp({
     }
     ctx.fillStyle = "#2E3435";
     ctx.fill();
+
+    perfTelemetry.endFrame("DotMatrixPfp", t0);
   }, [viewMode, sampleGrid]);
 
   // Damped spring animation loop for 3D mouse parallax (sleeps at rest)
@@ -333,10 +320,6 @@ export function DotMatrixPfp({
   }, [viewMode, isColorLoaded, isDepthLoaded, sampleGrid, renderMatrix]);
 
   const handleToggleMode = (e?: React.MouseEvent) => {
-    hasManuallyToggledRef.current = true;
-    if (autoSwitchTimeoutRef.current) {
-      clearTimeout(autoSwitchTimeoutRef.current);
-    }
     if (e && e.clientX !== undefined && e.clientY !== undefined) {
       lastMousePosRef.current = { clientX: e.clientX, clientY: e.clientY };
     }

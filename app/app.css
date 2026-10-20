@@ -154,8 +154,14 @@ body {
 
 .prose-custom a {
   color: #009E8E;
+  text-decoration: none;
+  transition: text-decoration 0.15s ease;
+}
+
+.prose-custom a:hover {
   text-decoration: underline;
   text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
 }
 
 .prose-custom hr {
@@ -263,3 +269,69 @@ body {
 .mermaid .edgeLabel foreignObject {
   overflow: visible !important;
 }
+
+/* ==========================================================================
+   Navigation Items & Global Link Hover Styles
+   ========================================================================== */
+
+/* Navbar links: change text color to green on hover with smooth transition, never draw a box or underline */
+nav a {
+  cursor: pointer;
+  background-color: transparent !important;
+  text-decoration: none !important;
+  transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+nav a:hover,
+nav a:focus-visible {
+  color: #009E8E !important;
+  background-color: transparent !important;
+  text-decoration: none !important;
+}
+
+nav a:hover *,
+nav a:focus-visible * {
+  color: #009E8E !important;
+  text-decoration: none !important;
+}
+
+/* Links everywhere else outside the navbar: underline smoothly appears and disappears on hover */
+a:not(nav a):not([data-no-underline]):not(.no-underline):not(.social-link) {
+  cursor: pointer;
+  text-decoration: underline !important;
+  text-decoration-color: transparent !important;
+  text-underline-offset: 4px !important;
+  text-decoration-thickness: 2px !important;
+  transition: text-decoration-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+a:not(nav a):not([data-no-underline]):not(.no-underline):not(.social-link):hover,
+a:not(nav a):not([data-no-underline]):not(.no-underline):not(.social-link):focus-visible {
+  text-decoration-color: currentColor !important;
+}
+
+/* Exceptions: Project cards, brand titles, & social icons never underline the container */
+[data-no-underline],
+[data-no-underline]:hover,
+.no-underline,
+.no-underline:hover,
+.social-link,
+.social-link:hover {
+  text-decoration: none !important;
+}
+
+/* Project items: only underline the title, with smooth appear/disappear transition */
+.project-title-link {
+  text-decoration: underline !important;
+  text-decoration-color: transparent !important;
+  text-underline-offset: 4px !important;
+  text-decoration-thickness: 2px !important;
+  transition: text-decoration-color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .project-title-link,
+a[data-project-card]:hover .project-title-link {
+  text-decoration-color: currentColor !important;
+}
+
+

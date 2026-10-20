@@ -33,8 +33,6 @@ function BlogPostCard({ post, selectedTag, onTagClick }: BlogPostCardProps) {
         <h3 className="text-[22px] sm:text-[24px] font-semibold text-[#009E8E] leading-snug">
           <Link
             to={`/blog/${post.slug}`}
-            viewTransition
-            onClick={() => setSlideDirection("/blog", `/blog/${post.slug}`)}
             className="hover:underline decoration-2 underline-offset-4 transition-all"
           >
             {post.title}
@@ -58,7 +56,7 @@ function BlogPostCard({ post, selectedTag, onTagClick }: BlogPostCardProps) {
             className={`cursor-pointer transition-colors ${
               selectedTag === tag
                 ? "text-[#009E8E] underline decoration-2 underline-offset-2"
-                : "hover:text-[#009E8E]"
+                : "hover:text-[#009E8E] hover:underline decoration-2 underline-offset-2"
             }`}
           >
             &lt;{tag}&gt;

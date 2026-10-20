@@ -4,6 +4,9 @@ import AboutRoute from "../routes/about";
 import ExperiencesRoute from "../routes/experiences";
 import ProjectsRoute from "../routes/projects";
 import BlogRoute from "../routes/blog";
+import { getPostBySlug, type BlogPost } from "../data/blog-posts";
+import { BlogArticleContent } from "../routes/blog-article";
+import { DotMatrixPfp } from "../components/dot-matrix-pfp";
 
 const ROUTE_INDEX_MAP: Record<string, number> = {
   "/": 0,
@@ -15,7 +18,7 @@ const ROUTE_INDEX_MAP: Record<string, number> = {
 
 function getActiveIndex(pathname: string): number {
   if (pathname in ROUTE_INDEX_MAP) return ROUTE_INDEX_MAP[pathname];
-  if (pathname.startsWith("/blog/")) return 3;
+  if (pathname.startsWith("/blog/")) return 4;
   return 0;
 }
 
@@ -26,6 +29,18 @@ export function PortfolioLayout() {
   const isArticlePage =
     location.pathname.startsWith("/blog/") && location.pathname !== "/blog";
   const activeIndex = getActiveIndex(location.pathname);
+
+  // Track the current article post so it never disappears during slide-out transitions
+  const articleSlugMatch = location.pathname.match(/^\/blog\/(.+)$/);
+  const articleSlug = articleSlugMatch ? articleSlugMatch[1] : null;
+  const currentArticlePost = articleSlug ? getPostBySlug(articleSlug) : null;
+  const lastArticlePostRef = useRef<BlogPost | null>(null);
+
+  if (currentArticlePost) {
+    lastArticlePostRef.current = currentArticlePost;
+  }
+
+  const articleToRender = currentArticlePost ?? lastArticlePostRef.current;
 
   const [displayIndex, setDisplayIndex] = useState(activeIndex);
   const [highlightIndex, setHighlightIndex] = useState(activeIndex);
@@ -81,8 +96,8 @@ export function PortfolioLayout() {
         updateHighlight(toIndex);
       }
 
-      // Smooth scroll to top when changing views
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      // Instant scroll to top when changing views to prevent scroll thrashing during view transitions
+      window.scrollTo({ top: 0, behavior: "instant" });
 
       const timer = setTimeout(() => {
         setIsAnimating(false);
@@ -143,7 +158,8 @@ export function PortfolioLayout() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="LinkedIn"
-        className="text-[#2E3435] hover:text-[#009E8E] transition-colors p-1"
+        data-no-underline
+        className="social-link text-[#2E3435] hover:text-[#009E8E] transition-colors p-1 no-underline"
       >
         <svg
           className={`${iconSize} fill-current`}
@@ -158,7 +174,8 @@ export function PortfolioLayout() {
       <a
         href="mailto:ic8437@rit.edu"
         aria-label="Email"
-        className="text-[#2E3435] hover:text-[#009E8E] transition-colors p-1"
+        data-no-underline
+        className="social-link text-[#2E3435] hover:text-[#009E8E] transition-colors p-1 no-underline"
       >
         <svg
           className={`${iconSize} fill-none stroke-current stroke-2`}
@@ -178,7 +195,8 @@ export function PortfolioLayout() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="GitHub"
-        className="text-[#2E3435] hover:text-[#009E8E] transition-colors p-1"
+        data-no-underline
+        className="social-link text-[#2E3435] hover:text-[#009E8E] transition-colors p-1 no-underline"
       >
         <svg
           className={`${iconSize} fill-current`}
@@ -210,7 +228,8 @@ export function PortfolioLayout() {
           <NavLink
             to="/"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="text-[26px] sm:text-[30px] font-semibold text-[#009E8E] leading-none hover:opacity-90 transition-opacity"
+            data-no-underline
+            className="text-[26px] sm:text-[30px] font-semibold text-[#009E8E] leading-none hover:opacity-90 transition-opacity no-underline"
           >
             Ivan Chen
           </NavLink>
@@ -261,21 +280,21 @@ export function PortfolioLayout() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-[36px] sm:text-[42px] font-semibold text-[#2E3435] hover:text-[#009E8E] transition-colors duration-200 block w-fit"
+                    className="text-[36px] sm:text-[42px] font-semibold text-[#2E3435] hover:text-[#009E8E] transition-colors duration-250 block w-fit"
                   >
                     {item.name}
                   </a>
                 );
               }
 
-              const isActive = highlightIndex === index;
+              const isActive = highlightIndex === index || (highlightIndex === 4 && index === 3);
 
               return (
                 <NavLink
                   key={item.name}
                   to={item.to}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`text-[36px] sm:text-[42px] font-semibold transition-colors duration-200 block w-fit ${
+                  className={`text-[36px] sm:text-[42px] font-semibold transition-colors duration-250 block w-fit ${
                     isActive
                       ? "text-[#009E8E]"
                       : "text-[#2E3435] hover:text-[#009E8E]"
@@ -306,43 +325,74 @@ export function PortfolioLayout() {
       <div className="max-w-[1600px] mx-auto px-6 sm:px-10 md:px-16 lg:px-24 pt-16 lg:pt-0">
         <div className="flex flex-col lg:flex-row lg:gap-16 xl:gap-24 items-start">
           {/* Desktop Left Sidebar: full height, permanently fixed, NEVER scrolls */}
-          <aside className="hidden lg:flex w-full lg:w-[320px] xl:w-[360px] shrink-0 py-8 lg:py-10 xl:py-12 lg:sticky lg:top-0 lg:h-screen lg:max-h-screen flex-col justify-between overflow-hidden">
+          {/* Desktop Left Sidebar: full height, permanently fixed, NEVER scrolls.
+              In article mode (Option A), sidebar smoothly narrows to a slim typographic rail and collapses the profile image. */}
+          {/* Desktop Left Sidebar: full height, permanently fixed, NEVER scrolls.
+              In article mode, profile image is hidden and media link buttons sit directly under name. */}
+          <aside
+            className={`hidden lg:flex shrink-0 py-8 lg:py-10 xl:py-12 lg:sticky lg:top-0 lg:h-screen lg:max-h-screen flex-col justify-between overflow-hidden transition-[width] duration-400 ease-in-out ${
+              isArticlePage
+                ? "w-[200px] xl:w-[220px]"
+                : "w-full lg:w-[320px] xl:w-[360px]"
+            }`}
+          >
             {/* Top Block: Title, Image, Greeting Row */}
             <div className="flex flex-col shrink-0">
               {/* Site Name / Title: 48px */}
-              <h1 className="text-[38px] sm:text-[44px] lg:text-[48px] font-semibold text-[#009E8E] leading-none mb-4 lg:mb-6 shrink-0">
+              <h1 className="text-[38px] sm:text-[44px] lg:text-[48px] font-semibold text-[#009E8E] leading-none shrink-0">
                 <NavLink
                   to="/"
-                  className="hover:opacity-90 transition-opacity"
+                  data-no-underline
+                  className="hover:opacity-90 transition-opacity no-underline"
                 >
                   Ivan Chen
                 </NavLink>
               </h1>
 
-              {/* Profile Image Box: strictly maintains 1:1 square ratio matching sidebar width */}
-              <div className="w-full aspect-square bg-[#F4F4F4] relative overflow-hidden shrink-0">
-                <img
-                  src="/pfp.webp"
-                  alt="Ivan Chen"
-                  width={1120}
-                  height={1120}
-                  fetchPriority="high"
-                  decoding="async"
-                  className="w-full h-full object-cover object-center"
-                />
+              {/* In Article View: media links smoothly slide in under name, aligned flush to the text edge */}
+              <div
+                className={`transition-all duration-400 ease-in-out ${
+                  isArticlePage
+                    ? "opacity-100 translate-x-0 max-h-16 mt-3 pointer-events-auto"
+                    : "opacity-0 -translate-x-6 max-h-0 overflow-hidden pointer-events-none mt-0"
+                }`}
+              >
+                <div className="flex items-center -ml-1">
+                  <SocialLinks gap="gap-3" />
+                </div>
               </div>
 
-              {/* Greeting & Social Icons Row */}
-              <div className="flex items-center justify-between mt-3 lg:mt-4 text-[#2E3435] shrink-0">
-                <span className="font-semibold text-base sm:text-lg whitespace-nowrap shrink-0">
-                  Nice to meet you!
-                </span>
-                <SocialLinks />
+              {/* Profile Image & Greeting Box: smooth slide-away collapse in article mode */}
+              <div
+                className={`grid transition-[grid-template-rows] duration-400 ease-in-out ${
+                  isArticlePage
+                    ? "grid-rows-[0fr]"
+                    : "grid-rows-[1fr]"
+                }`}
+              >
+                <div
+                  className={`overflow-hidden transition-all duration-400 ease-in-out origin-left ${
+                    isArticlePage
+                      ? "opacity-0 -translate-x-12 mt-0"
+                      : "opacity-100 translate-x-0 mt-4 lg:mt-6"
+                  }`}
+                >
+                  {/* Profile Image Box: strictly maintains 1:1 square ratio matching sidebar width */}
+                  <DotMatrixPfp className="shrink-0" />
+
+                  {/* Greeting & Social Icons Row */}
+                  <div className="flex items-center justify-between mt-3 lg:mt-4 text-[#2E3435] shrink-0">
+                    <span className="font-semibold text-base sm:text-lg whitespace-nowrap shrink-0">
+                      Nice to meet you!
+                    </span>
+                    <SocialLinks />
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Navigation Links: floating evenly between Nice to meet you! and Copyright */}
-            <nav className="flex flex-col gap-2 my-auto py-2 shrink-0">
+            {/* Navigation Links: floating evenly between Top Block and Copyright */}
+            <nav className="flex flex-col gap-2 my-auto py-2 shrink-0 transition-[margin,transform] duration-400 ease-in-out">
               {navItems.map((item, index) => {
                 if (item.external) {
                   return (
@@ -351,20 +401,20 @@ export function PortfolioLayout() {
                       href={item.to}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[22px] sm:text-[24px] font-semibold text-[#2E3435] hover:text-[#009E8E] transition-colors duration-200 block w-fit"
+                      className="text-[22px] sm:text-[24px] font-semibold text-[#2E3435] hover:text-[#009E8E] transition-colors duration-250 block w-fit"
                     >
                       {item.name}
                     </a>
                   );
                 }
 
-                const isActive = highlightIndex === index;
+                const isActive = highlightIndex === index || (highlightIndex === 4 && index === 3);
 
                 return (
                   <NavLink
                     key={item.name}
                     to={item.to}
-                    className={`text-[22px] sm:text-[24px] font-semibold transition-colors duration-200 block w-fit ${
+                    className={`text-[22px] sm:text-[24px] font-semibold transition-colors duration-250 block w-fit ${
                       isActive
                         ? "text-[#009E8E]"
                         : "text-[#2E3435] hover:text-[#009E8E]"
@@ -386,93 +436,98 @@ export function PortfolioLayout() {
 
           {/* Right Main Content Area: independently scrollable with horizontal filmstrip track */}
           <main className="flex-1 w-full py-8 lg:py-10 xl:py-12 min-w-0 overflow-x-clip">
-            {isArticlePage ? (
-              <Outlet />
-            ) : (
-              <div className="portfolio-track-container w-full">
+            <div className="portfolio-track-container w-full">
+              <div
+                className="portfolio-track flex items-start w-full"
+                style={{
+                  transform: `translateX(-${displayIndex * 100}%)`,
+                  transitionProperty: isInitialLoad ? "none" : "transform",
+                  transitionDuration: isInitialLoad ? "0ms" : `${transitionDuration}ms`,
+                  transitionTimingFunction: "cubic-bezier(0.65, 0, 0.35, 1)",
+                }}
+              >
+                {/* Slide 0: About */}
                 <div
-                  className="portfolio-track flex items-start w-full"
-                  style={{
-                    transform: `translateX(-${displayIndex * 100}%)`,
-                    transitionProperty: isInitialLoad ? "none" : "transform",
-                    transitionDuration: isInitialLoad ? "0ms" : `${transitionDuration}ms`,
-                    transitionTimingFunction: "cubic-bezier(0.65, 0, 0.35, 1)",
-                  }}
+                  className={`portfolio-slide w-full shrink-0 min-w-0 ${
+                    !isAnimating && displayIndex !== 0
+                      ? "h-0 overflow-hidden invisible"
+                      : "h-auto"
+                  }`}
+                  aria-hidden={displayIndex !== 0}
+                  inert={displayIndex !== 0}
                 >
-                  {/* Slide 0: About */}
-                  <div
-                    className={`portfolio-slide w-full shrink-0 min-w-0 ${
-                      !isAnimating && displayIndex !== 0
-                        ? "h-0 overflow-hidden invisible"
-                        : "h-auto"
-                    }`}
-                    aria-hidden={displayIndex !== 0}
-                    inert={displayIndex !== 0}
-                  >
-                    {/* Mobile Profile Card on About route */}
-                    <div className="lg:hidden mb-8 flex flex-col items-center">
-                      <div className="w-[280px] sm:w-[320px] aspect-square bg-[#F4F4F4] relative overflow-hidden shrink-0 mb-3 shadow-xs">
-                        <img
-                          src="/pfp.webp"
-                          alt="Ivan Chen"
-                          width={1120}
-                          height={1120}
-                          fetchPriority="high"
-                          decoding="async"
-                          className="w-full h-full object-cover object-center"
-                        />
-                      </div>
-                      <div className="w-[280px] sm:w-[320px] flex items-center justify-between text-[#2E3435]">
-                        <span className="font-semibold text-base sm:text-lg whitespace-nowrap shrink-0">
-                          Nice to meet you!
-                        </span>
-                        <SocialLinks />
-                      </div>
+                  {/* Mobile Profile Card on About route */}
+                  <div className="lg:hidden mb-8 flex flex-col items-center">
+                    <div className="w-[280px] sm:w-[320px] mb-3">
+                      <DotMatrixPfp />
                     </div>
-                    <AboutRoute />
+                    <div className="w-[280px] sm:w-[320px] flex items-center justify-between text-[#2E3435]">
+                      <span className="font-semibold text-base sm:text-lg whitespace-nowrap shrink-0">
+                        Nice to meet you!
+                      </span>
+                      <SocialLinks />
+                    </div>
                   </div>
+                  <AboutRoute />
+                </div>
 
-                  {/* Slide 1: Experiences */}
-                  <div
-                    className={`portfolio-slide w-full shrink-0 min-w-0 ${
-                      !isAnimating && displayIndex !== 1
-                        ? "h-0 overflow-hidden invisible"
-                        : "h-auto"
-                    }`}
-                    aria-hidden={displayIndex !== 1}
-                    inert={displayIndex !== 1}
-                  >
-                    <ExperiencesRoute />
-                  </div>
+                {/* Slide 1: Experiences */}
+                <div
+                  className={`portfolio-slide w-full shrink-0 min-w-0 ${
+                    !isAnimating && displayIndex !== 1
+                      ? "h-0 overflow-hidden invisible"
+                      : "h-auto"
+                  }`}
+                  aria-hidden={displayIndex !== 1}
+                  inert={displayIndex !== 1}
+                >
+                  <ExperiencesRoute />
+                </div>
 
-                  {/* Slide 2: Projects */}
-                  <div
-                    className={`portfolio-slide w-full shrink-0 min-w-0 ${
-                      !isAnimating && displayIndex !== 2
-                        ? "h-0 overflow-hidden invisible"
-                        : "h-auto"
-                    }`}
-                    aria-hidden={displayIndex !== 2}
-                    inert={displayIndex !== 2}
-                  >
-                    <ProjectsRoute />
-                  </div>
+                {/* Slide 2: Projects */}
+                <div
+                  className={`portfolio-slide w-full shrink-0 min-w-0 ${
+                    !isAnimating && displayIndex !== 2
+                      ? "h-0 overflow-hidden invisible"
+                      : "h-auto"
+                  }`}
+                  aria-hidden={displayIndex !== 2}
+                  inert={displayIndex !== 2}
+                >
+                  <ProjectsRoute />
+                </div>
 
-                  {/* Slide 3: Blog */}
-                  <div
-                    className={`portfolio-slide w-full shrink-0 min-w-0 ${
-                      !isAnimating && displayIndex !== 3
-                        ? "h-0 overflow-hidden invisible"
-                        : "h-auto"
-                    }`}
-                    aria-hidden={displayIndex !== 3}
-                    inert={displayIndex !== 3}
-                  >
-                    <BlogRoute />
-                  </div>
+                {/* Slide 3: Blog */}
+                <div
+                  className={`portfolio-slide w-full shrink-0 min-w-0 ${
+                    !isAnimating && displayIndex !== 3
+                      ? "h-0 overflow-hidden invisible"
+                      : "h-auto"
+                  }`}
+                  aria-hidden={displayIndex !== 3}
+                  inert={displayIndex !== 3}
+                >
+                  <BlogRoute />
+                </div>
+
+                {/* Slide 4: Blog Article */}
+                <div
+                  className={`portfolio-slide w-full shrink-0 min-w-0 ${
+                    !isAnimating && displayIndex !== 4
+                      ? "h-0 overflow-hidden invisible"
+                      : "h-auto"
+                  }`}
+                  aria-hidden={displayIndex !== 4}
+                  inert={displayIndex !== 4}
+                >
+                  {articleToRender ? (
+                    <BlogArticleContent post={articleToRender} />
+                  ) : (
+                    <Outlet />
+                  )}
                 </div>
               </div>
-            )}
+            </div>
           </main>
         </div>
       </div>
