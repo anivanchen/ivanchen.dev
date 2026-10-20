@@ -127,6 +127,51 @@ export function PortfolioLayout() {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
+  // Update reading progress bar on scroll when viewing an article
+  useEffect(() => {
+    if (!isArticlePage) return;
+
+    let rafId: number | null = null;
+
+    const updateProgress = () => {
+      const bar = document.getElementById("reading-progress-bar");
+      if (!bar) return;
+
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = window.innerHeight || document.documentElement.clientHeight;
+      const scrollableDistance = scrollHeight - clientHeight;
+
+      if (scrollableDistance <= 0) {
+        bar.style.width = "100%";
+        return;
+      }
+
+      const pct = Math.min(100, Math.max(0, (scrollTop / scrollableDistance) * 100));
+      bar.style.width = `${pct.toFixed(1)}%`;
+    };
+
+    const handleScroll = () => {
+      if (rafId === null) {
+        rafId = requestAnimationFrame(() => {
+          updateProgress();
+          rafId = null;
+        });
+      }
+    };
+
+    updateProgress();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
+
+    return () => {
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, [isArticlePage, location.pathname]);
+
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -215,6 +260,21 @@ export function PortfolioLayout() {
 
   return (
     <div className="min-h-screen bg-white text-[#2E3435] selection:bg-[#009E8E]/20 selection:text-[#009E8E] font-cal">
+      {/* Reading Progress Bar for Article Pages (z-[70] above header z-50) */}
+      {isArticlePage && (
+        <div
+          className="fixed top-16 lg:top-0 left-0 right-0 z-[70] h-[6px] bg-[#009E8E]/15 pointer-events-none"
+          role="progressbar"
+          aria-label="Reading progress"
+        >
+          <div
+            id="reading-progress-bar"
+            className="h-full bg-[#009E8E] shadow-[0_0_10px_rgba(0,158,142,0.8)] will-change-[width] transition-[width] duration-75 ease-out"
+            style={{ width: "0%" }}
+          />
+        </div>
+      )}
+
       {/* Expanding Mobile Header & Full-Screen Menu (Screen < lg) */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 bg-white lg:hidden transition-[height] duration-500 ease-in-out overflow-hidden flex flex-col ${

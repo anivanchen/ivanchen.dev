@@ -153,7 +153,7 @@ export default function ProjectsRoute() {
       title: "stuyspec.com",
       year: "2023",
       description:
-        "Digital web publication and content platform for The Spectator, Stuyvesant High School's student-run newspaper. Maintained frontend web architecture, streamlined digital publication workflows, and delivered content to thousands of monthly readers.",
+        "Digital web publication and content platform for The Spectator, Stuyvesant High School's student-run newspaper. Redesigned frontend web architecture, streamlined digital publication workflows, and delivered content smoothly to thousands of monthly readers.",
       link: "https://stuyspec.com/",
     },
   ];
