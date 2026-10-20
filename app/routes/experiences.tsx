@@ -53,9 +53,8 @@ export default function ExperiencesRoute() {
       role: "Teaching Assistant",
       period: "August 2025 - Present",
       bullets: [
-        "Facilitate weekly laboratory sessions and open office hours for computer engineering and embedded systems coursework.",
         "Mentor students in low-level C programming, microcontroller peripherals (timers, interrupts, PWM), and digital logic design.",
-        "Perform code reviews and evaluate hardware interface design and lab deliverables.",
+        "Facilitate weekly open office hours for the mechatronics senior design course in electrical, computer, and control systems.",
       ],
     },
     {

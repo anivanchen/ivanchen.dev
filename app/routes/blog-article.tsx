@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Link, data, useLocation } from "react-router";
 import type { Route } from "./+types/blog-article";
 import { getPostBySlug } from "../data/blog-posts";
@@ -22,18 +23,85 @@ export function meta({ data }: Route.MetaArgs) {
   ];
 }
 
-export default function BlogArticleRoute({ loaderData }: Route.ComponentProps) {
-  const { post } = loaderData;
-  const location = useLocation();
+import type { BlogPost } from "../data/blog-posts";
+
+export function BlogArticleContent({ post }: { post: BlogPost }) {
+  const articleRef = useRef<HTMLDivElement | null>(null);
+  const barRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    let rafId: number | null = null;
+
+    const updateProgress = () => {
+      const articleEl = articleRef.current;
+      const barEl = barRef.current;
+      if (!articleEl || !barEl) return;
+
+      const rect = articleEl.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const total = rect.height - windowHeight;
+
+      if (total <= 0) {
+        barEl.style.width = "100%";
+        return;
+      }
+
+      // Distance scrolled through the article content
+      const current = -rect.top;
+      const pct = Math.min(100, Math.max(0, (current / total) * 100));
+      barEl.style.width = `${pct.toFixed(1)}%`;
+      barEl.style.opacity = current > 10 ? "1" : "0";
+    };
+
+    const handleScroll = () => {
+      if (rafId === null) {
+        rafId = requestAnimationFrame(() => {
+          updateProgress();
+          rafId = null;
+        });
+      }
+    };
+
+    updateProgress();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
+
+    let resizeObserver: ResizeObserver | null = null;
+    if (typeof ResizeObserver !== "undefined" && articleRef.current) {
+      resizeObserver = new ResizeObserver(() => {
+        updateProgress();
+      });
+      resizeObserver.observe(articleRef.current);
+    }
+
+    return () => {
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+      if (resizeObserver) resizeObserver.disconnect();
+    };
+  }, [post.slug]);
 
   return (
-    <div className="w-full font-cal max-w-4xl">
+    <div ref={articleRef} className="w-full font-cal">
+      {/* Reading Progress Bar (Amount Read) */}
+      <div
+        className="fixed top-16 lg:top-0 left-0 right-0 z-[60] h-[3px] bg-[#2E3435]/5 pointer-events-none"
+        role="progressbar"
+        aria-label="Reading progress"
+      >
+        <div
+          ref={barRef}
+          className="h-full bg-[#009E8E] shadow-[0_0_8px_rgba(0,158,142,0.6)] will-change-[width] transition-opacity duration-300 ease-out"
+          style={{ width: "0%", opacity: 0 }}
+        />
+      </div>
+
       {/* Back to Blog */}
       <div className="mb-8">
         <Link
           to="/blog"
-          viewTransition
-          onClick={() => setSlideDirection(location.pathname, "/blog")}
           className="inline-flex items-center gap-2 text-base font-semibold text-[#009E8E] hover:underline decoration-2 underline-offset-4 transition-all"
         >
           <svg
@@ -90,4 +158,8 @@ export default function BlogArticleRoute({ loaderData }: Route.ComponentProps) {
       </footer>
     </div>
   );
+}
+
+export default function BlogArticleRoute({ loaderData }: Route.ComponentProps) {
+  return <BlogArticleContent post={loaderData.post} />;
 }
