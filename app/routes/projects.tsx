@@ -1,4 +1,6 @@
+import { useRef } from "react";
 import type { Route } from "./+types/projects";
+import { AutonomousArena } from "../components/autonomous-arena";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -15,6 +17,101 @@ interface Project {
   year: string;
   description: string;
   link?: string;
+}
+
+function ProjectCard({ project }: { project: Project }) {
+  const cardRef = useRef<HTMLAnchorElement | null>(null);
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    const el = cardRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    const rotX = -y * 6; // Lean into cursor vertically
+    const rotY = x * 6;  // Lean into cursor horizontally
+    el.style.transform = `perspective(800px) translateY(-5px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg)`;
+  };
+
+  const handlePointerEnter = () => {
+    const el = cardRef.current;
+    if (!el) return;
+    el.style.transition = "transform 0.1s ease-out, box-shadow 0.25s ease-out, background-color 0.25s ease-out, border-color 0.25s ease-out";
+  };
+
+  const handlePointerLeave = () => {
+    const el = cardRef.current;
+    if (!el) return;
+    el.style.transition = "transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease-out, background-color 0.3s ease-out, border-color 0.3s ease-out";
+    el.style.transform = "perspective(800px) translateY(0px) rotateX(0deg) rotateY(0deg)";
+  };
+
+  if (project.link) {
+    return (
+      <a
+        ref={cardRef}
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-no-underline
+        data-project-card
+        onPointerMove={handlePointerMove}
+        onPointerEnter={handlePointerEnter}
+        onPointerLeave={handlePointerLeave}
+        className="flex flex-col group p-5 -m-5 rounded-2xl border border-transparent hover:border-[#7D7D7D]/20 hover:bg-[#F4F4F4]/50 hover:shadow-[0_12px_24px_-8px_rgba(46,52,53,0.08)] will-change-transform cursor-pointer select-none transition-colors no-underline"
+        style={{
+          transform: "perspective(800px) translateY(0px) rotateX(0deg) rotateY(0deg)",
+        }}
+      >
+        {/* Header: Project Name (24px) & Year */}
+        <div className="flex items-baseline justify-between gap-4 mb-3">
+          <h3 className="text-[22px] sm:text-[24px] font-semibold text-[#009E8E] flex items-center gap-2">
+            <span className="project-title-link">{project.title}</span>
+            <svg
+              className="w-4 h-4 text-[#009E8E] opacity-0 -translate-x-1 translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-200 shrink-0"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg>
+          </h3>
+          <span className="text-base sm:text-lg font-semibold text-[#2E3435] shrink-0">
+            {project.year}
+          </span>
+        </div>
+
+        {/* Description */}
+        <p className="text-sm sm:text-base text-[#2E3435] font-normal leading-relaxed">
+          {project.description}
+        </p>
+      </a>
+    );
+  }
+
+  return (
+    <div className="flex flex-col p-5 -m-5 rounded-2xl">
+      {/* Header: Project Name (24px) & Year */}
+      <div className="flex items-baseline justify-between gap-4 mb-3">
+        <h3 className="text-[22px] sm:text-[24px] font-semibold text-[#009E8E]">
+          {project.title}
+        </h3>
+        <span className="text-base sm:text-lg font-semibold text-[#2E3435] shrink-0">
+          {project.year}
+        </span>
+      </div>
+
+      {/* Description */}
+      <p className="text-sm sm:text-base text-[#2E3435] font-normal leading-relaxed">
+        {project.description}
+      </p>
+    </div>
+  );
 }
 
 export default function ProjectsRoute() {
@@ -64,60 +161,19 @@ export default function ProjectsRoute() {
   return (
     <div className="w-full font-cal">
       {/* Page Heading: 48px */}
-      <h2 className="text-[36px] sm:text-[44px] lg:text-[48px] font-semibold text-[#2E3435] leading-tight mb-10">
+      <h2 className="text-[36px] sm:text-[44px] lg:text-[48px] font-semibold text-[#2E3435] leading-tight mb-8">
         Projects
       </h2>
+
+      {/* Autonomous Multi-Agent Arena */}
+      <div className="mb-12">
+        <AutonomousArena id="projects" rows={8} />
+      </div>
 
       {/* 2-Column Projects Grid matching Frame 3 */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 lg:gap-x-12 gap-y-12">
         {projects.map((project, index) => (
-          <div key={index} className="flex flex-col group">
-            {/* Header: Project Name (24px) & Year */}
-            <div className="flex items-baseline justify-between gap-4 mb-3">
-              {project.link ? (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[22px] sm:text-[24px] font-semibold text-[#009E8E] hover:underline decoration-2 underline-offset-4 transition-all"
-                >
-                  {project.title}
-                </a>
-              ) : (
-                <h3 className="text-[22px] sm:text-[24px] font-semibold text-[#009E8E]">
-                  {project.title}
-                </h3>
-              )}
-              <span className="text-base sm:text-lg font-semibold text-[#2E3435] shrink-0">
-                {project.year}
-              </span>
-            </div>
-
-            {/* Image Placeholder Frame matching Frame 3: #F4F4F4 */}
-            {/*
-            <div className="w-full aspect-[16/10] bg-[#F4F4F4] mb-4 relative overflow-hidden flex items-center justify-center">
-              <svg
-                className="w-12 h-12 text-[#7D7D7D]/30"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1.5"
-                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-            </div>
-            */}
-
-            {/* Description */}
-            <p className="text-sm sm:text-base text-[#2E3435] font-normal leading-relaxed">
-              {project.description}
-            </p>
-          </div>
+          <ProjectCard key={index} project={project} />
         ))}
       </div>
     </div>
