@@ -42,11 +42,18 @@ export function AutonomousArena({
 
   const gridDimsRef = useRef({ cols: 0, rows: 0, startX: 0, startY: 0 });
 
-  const pointerPosRef = useRef<{ x: number; y: number; active: boolean }>({
+  const pointerPosRef = useRef<{
+    x: number;
+    y: number;
+    active: boolean;
+    isAttracting: boolean;
+  }>({
     x: -9999,
     y: -9999,
     active: false,
+    isAttracting: false,
   });
+  const wasAttractingRef = useRef(false);
 
   // Seed teal agents scattered across the grid on unique cells
   const initAgents = useCallback((cols: number, rows: number) => {
@@ -177,8 +184,36 @@ export function AutonomousArena({
       cursorAlphaRef.current += (targetAlpha - cursorAlphaRef.current) * 0.16;
       const auraAlpha = cursorAlphaRef.current;
 
-      // 2. Batched Cell Highlights (Single Fill & Stroke Pass!)
-      if (auraAlpha > 0.005 && cols > 0 && rows > 0) {
+      // 2. Batched Cell Highlights / Attractor Field
+      if (pointer.isAttracting) {
+        // Contracting magnetic pulse rings & attractor core
+        const pulse = (now * 0.0007) % 1;
+        const maxR = 90;
+        const minR = 6;
+
+        ctx.lineWidth = 1.5;
+        for (let ring = 0; ring < 3; ring++) {
+          const phase = (pulse + ring / 3) % 1;
+          const r = minR + (1 - phase) * (maxR - minR);
+          const ringAlpha = Math.sin(phase * Math.PI) * 0.45;
+          ctx.beginPath();
+          ctx.arc(pointer.x, pointer.y, r, 0, 6.2831853);
+          ctx.strokeStyle = `rgba(0, 158, 142, ${ringAlpha.toFixed(3)})`;
+          ctx.stroke();
+        }
+
+        // Central attractor core dot
+        ctx.beginPath();
+        ctx.arc(pointer.x, pointer.y, 4, 0, 6.2831853);
+        ctx.fillStyle = "#009E8E";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(pointer.x, pointer.y, 8, 0, 6.2831853);
+        ctx.strokeStyle = "rgba(0, 158, 142, 0.4)";
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      } else if (auraAlpha > 0.005 && cols > 0 && rows > 0) {
         const minCol = Math.max(0, Math.floor((pointer.x - FLEE_RADIUS - startX) / STEP));
         const maxCol = Math.min(cols - 1, Math.ceil((pointer.x + FLEE_RADIUS - startX) / STEP));
         const minRow = Math.max(0, Math.floor((pointer.y - FLEE_RADIUS - startY) / STEP));
@@ -227,6 +262,28 @@ export function AutonomousArena({
         }
       }
 
+      // Handle attraction state changes (bursts / progressive awakening)
+      const isAttracting = pointer.isAttracting;
+      if (isAttracting && !wasAttractingRef.current) {
+        // Just started attracting: wake up agents with a brisk, staggered surge
+        for (let i = 0; i < numAgents; i++) {
+          agents[i].nextHopTime = Math.min(agents[i].nextHopTime, now + 70 + Math.random() * 110);
+        }
+      } else if (!isAttracting && wasAttractingRef.current) {
+        // Just released attractor: starburst scatter outward from cursor release point!
+        for (let i = 0; i < numAgents; i++) {
+          const a = agents[i];
+          const ax = startX + a.col * STEP;
+          const ay = startY + a.row * STEP;
+          const dx = ax - pointer.x;
+          const dy = ay - pointer.y;
+          a.dirCol = Math.sign(dx) || (Math.random() > 0.5 ? 1 : -1);
+          a.dirRow = Math.sign(dy) || (Math.random() > 0.5 ? 1 : -1);
+          a.nextHopTime = now + 80 + Math.random() * 100;
+        }
+      }
+      wasAttractingRef.current = isAttracting;
+
       for (let i = 0; i < numAgents; i++) {
         const a = agents[i];
         const ax = startX + a.col * STEP;
@@ -235,13 +292,16 @@ export function AutonomousArena({
         const cdx = ax - pointer.x;
         const cdy = ay - pointer.y;
         const dist = Math.hypot(cdx, cdy);
-        const isFleeing = pointer.active && dist < FLEE_RADIUS;
+        const isFleeing = !isAttracting && pointer.active && dist < FLEE_RADIUS;
 
         if (now < a.nextHopTime) {
           continue;
         }
 
-        if (isFleeing) {
+        if (isAttracting) {
+          // Responsive attraction hop interval (170ms - 260ms)
+          a.nextHopTime = now + (170 + Math.random() * 90);
+        } else if (isFleeing) {
           const urgency = 1 - dist / FLEE_RADIUS;
           a.nextHopTime = now + (160 + (1 - urgency) * 140);
         } else {
@@ -253,6 +313,23 @@ export function AutonomousArena({
         let bestRow = a.row;
         let bestDirCol = a.dirCol;
         let bestDirRow = a.dirRow;
+
+        // If attracting, calculate baseline score for staying put so an agent doesn't
+        // walk away from the cursor if all closer cells are full
+        if (isAttracting) {
+          let curPenalty = 0;
+          for (let s = 0; s < 8; s++) {
+            const snc = a.col + DX[s];
+            const snr = a.row + DY[s];
+            if (snc >= 0 && snc < cols && snr >= 0 && snr < rows) {
+              const occ = occupied[snr * cols + snc];
+              if (occ !== -1 && occ !== i) {
+                curPenalty += 3.5;
+              }
+            }
+          }
+          bestScore = -dist * 5.0 - curPenalty;
+        }
 
         const startK = Math.floor(Math.random() * 8);
 
@@ -284,7 +361,13 @@ export function AutonomousArena({
           }
 
           let score = 0;
-          if (isFleeing) {
+          if (isAttracting) {
+            const nax = startX + nc * STEP;
+            const nay = startY + nr * STEP;
+            const nDist = Math.hypot(nax - pointer.x, nay - pointer.y);
+            // Negative distance = closer to cursor gets higher score
+            score = -nDist * 5.0 - neighborPenalty + (Math.random() - 0.5) * 4;
+          } else if (isFleeing) {
             const nax = startX + nc * STEP;
             const nay = startY + nr * STEP;
             const nDist = Math.hypot(nax - pointer.x, nay - pointer.y);
@@ -373,6 +456,39 @@ export function AutonomousArena({
     return () => observer.disconnect();
   }, []);
 
+  // Global safety listener: release attractor when pointer is released anywhere in window
+  useEffect(() => {
+    const handleGlobalPointerUp = () => {
+      pointerPosRef.current.isAttracting = false;
+    };
+    window.addEventListener("pointerup", handleGlobalPointerUp);
+    window.addEventListener("pointercancel", handleGlobalPointerUp);
+    return () => {
+      window.removeEventListener("pointerup", handleGlobalPointerUp);
+      window.removeEventListener("pointercancel", handleGlobalPointerUp);
+    };
+  }, []);
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (e.button === 0) {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      pointerPosRef.current = {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+        active: true,
+        isAttracting: true,
+      };
+    }
+  };
+
+  const handlePointerUp = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (e.button === 0) {
+      pointerPosRef.current.isAttracting = false;
+    }
+  };
+
   const handlePointerMove = (e: React.PointerEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -381,11 +497,13 @@ export function AutonomousArena({
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
       active: true,
+      isAttracting: (e.buttons & 1) === 1,
     };
   };
 
   const handlePointerLeave = () => {
     pointerPosRef.current.active = false;
+    pointerPosRef.current.isAttracting = false;
   };
 
   return (
@@ -399,9 +517,11 @@ export function AutonomousArena({
       >
         <canvas
           ref={canvasRef}
+          onPointerDown={handlePointerDown}
+          onPointerUp={handlePointerUp}
           onPointerMove={handlePointerMove}
           onPointerLeave={handlePointerLeave}
-          className="w-full h-full block touch-none"
+          className="w-full h-full block touch-none cursor-crosshair active:cursor-grabbing"
         />
       </div>
     </div>
