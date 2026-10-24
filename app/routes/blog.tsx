@@ -65,7 +65,7 @@ function BlogPostCard({ post, selectedTag, onTagClick }: BlogPostCardProps) {
       </div>
 
       {/* Description in #2E3435 */}
-      <p className="text-sm sm:text-base text-[#2E3435] font-normal leading-relaxed">
+      <p className="text-sm sm:text-base text-[#2E3435] font-normal leading-relaxed font-sans">
         {post.description}
       </p>
     </article>
@@ -145,7 +145,7 @@ export default function BlogRoute({
       <div className="space-y-8">
         {filteredPosts.length === 0 ? (
           <div className="py-12 text-center text-[#7D7D7D]">
-            <p className="text-base sm:text-lg mb-4">
+            <p className="text-base sm:text-lg mb-4 font-sans">
               No articles found with tag &lt;{selectedTag}&gt;.
             </p>
             <button

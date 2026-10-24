@@ -51,6 +51,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+p {
+  font-family: var(--font-sans);
+  letter-spacing: normal;
+}
+
 @layer utilities {
   .font-cal {
     font-family: "Cal Sans", "Inter", sans-serif;
@@ -60,6 +65,7 @@ body {
 
 /* Custom Typography styles for Markdown articles */
 .prose-custom h1 {
+  font-family: var(--font-heading);
   font-size: 2.25rem;
   font-weight: 600;
   color: #2E3435;
@@ -69,6 +75,7 @@ body {
 }
 
 .prose-custom h2 {
+  font-family: var(--font-heading);
   font-size: 1.75rem;
   font-weight: 600;
   color: #2E3435;
@@ -78,6 +85,7 @@ body {
 }
 
 .prose-custom h3 {
+  font-family: var(--font-heading);
   font-size: 1.35rem;
   font-weight: 600;
   color: #2E3435;
@@ -86,6 +94,8 @@ body {
 }
 
 .prose-custom p {
+  font-family: var(--font-sans);
+  letter-spacing: normal;
   color: #2E3435;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -93,6 +103,8 @@ body {
 }
 
 .prose-custom ul {
+  font-family: var(--font-sans);
+  letter-spacing: normal;
   list-style-type: disc;
   margin-left: 1.5rem;
   margin-top: 1rem;
@@ -103,6 +115,8 @@ body {
 }
 
 .prose-custom ol {
+  font-family: var(--font-sans);
+  letter-spacing: normal;
   list-style-type: decimal;
   margin-left: 1.5rem;
   margin-top: 1rem;
@@ -113,6 +127,8 @@ body {
 }
 
 .prose-custom li {
+  font-family: var(--font-sans);
+  letter-spacing: normal;
   line-height: 1.6;
 }
 
@@ -144,6 +160,8 @@ body {
 }
 
 .prose-custom blockquote {
+  font-family: var(--font-sans);
+  letter-spacing: normal;
   border-left: 4px solid #009E8E;
   background-color: rgba(244, 244, 244, 0.6);
   padding: 0.75rem 1.25rem;

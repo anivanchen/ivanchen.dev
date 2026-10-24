@@ -110,7 +110,7 @@ export default function ExperiencesRoute() {
             </h4>
 
             {/* Bullets */}
-            <ul className="space-y-2 text-sm sm:text-base text-[#2E3435] leading-relaxed list-disc list-outside ml-5">
+            <ul className="space-y-2 text-sm sm:text-base text-[#2E3435] leading-relaxed list-disc list-outside ml-5 font-sans font-normal">
               {exp.bullets.map((bullet, bIdx) => (
                 <li key={bIdx} className="pl-1">
                   {bullet}

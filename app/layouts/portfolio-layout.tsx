@@ -374,7 +374,7 @@ export function PortfolioLayout() {
               </span>
               <SocialLinks iconSize="w-6 h-6" gap="gap-4" />
             </div>
-            <p className="text-sm font-semibold text-[#2E3435]">
+            <p className="font-cal text-sm font-semibold text-[#2E3435]">
               &copy; 2026 Ivan Chen
             </p>
           </div>
@@ -488,7 +488,7 @@ export function PortfolioLayout() {
 
             {/* Copyright: pinned at bottom */}
             <div className="pt-4 shrink-0">
-              <p className="text-sm sm:text-base font-semibold text-[#2E3435]">
+              <p className="font-cal text-sm sm:text-base font-semibold text-[#2E3435]">
                 &copy; 2026 Ivan Chen
               </p>
             </div>

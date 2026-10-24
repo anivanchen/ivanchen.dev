@@ -21,7 +21,7 @@ export default function AboutRoute() {
       </h2>
 
       {/* Intro Paragraphs */}
-      <div className="space-y-6 text-[#2E3435] text-base sm:text-lg leading-relaxed font-normal">
+      <div className="space-y-6 text-[#2E3435] text-base sm:text-lg leading-relaxed font-normal font-sans">
         <p>
           I am a junior undergraduate student at{" "}
           <a

@@ -87,7 +87,7 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
 
         {/* Description */}
-        <p className="text-sm sm:text-base text-[#2E3435] font-normal leading-relaxed">
+        <p className="text-sm sm:text-base text-[#2E3435] font-normal leading-relaxed font-sans">
           {project.description}
         </p>
       </a>
@@ -107,7 +107,7 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
 
       {/* Description */}
-      <p className="text-sm sm:text-base text-[#2E3435] font-normal leading-relaxed">
+      <p className="text-sm sm:text-base text-[#2E3435] font-normal leading-relaxed font-sans">
         {project.description}
       </p>
     </div>
